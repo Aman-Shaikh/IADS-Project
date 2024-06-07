@@ -1,10 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/', include('main.urls')),  # Ensure main.urls includes 'register' and 'login' paths
-    path('login/', auth_views.LoginView.as_view(template_name='main/login.html'), name='login'),
     path('', include('main.urls')),
+    path('user/', include('user.urls')),
+    path('guides/', include('guides.urls')),
+    path('search/', include('search.urls')),
+    path('contact/', include('contact.urls')),
+    path('recycling_centers/', include('recycling_centers.urls')),
+    path('uploads/', include('uploads.urls')),
 ]

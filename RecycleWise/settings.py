@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# recyclewise/settings.py
+# RecycleWise/settings.py
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 
