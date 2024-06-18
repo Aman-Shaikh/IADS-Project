@@ -3,9 +3,10 @@ from django.db import models
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_profile')
     bio = models.TextField(blank=True)
     location = models.CharField(max_length=100, blank=True)
+    # Additional fields can be added as needed
 
     def __str__(self):
         return self.user.username

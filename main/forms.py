@@ -1,16 +1,16 @@
+# main/forms.py
+
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
 
-
-class UserRegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+class RegisterForm(UserCreationForm):
+    email = forms.EmailField()
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
-
-class UserLoginForm(AuthenticationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'autofocus': True}))
-    password = forms.CharField(label="Password", strip=False, widget=forms.PasswordInput)
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
