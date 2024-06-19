@@ -1,21 +1,36 @@
+# main/views.py
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.decorators import login_required
-from .forms import UserRegistrationForm
-from .models import RecyclingGuide
+from .forms import RegisterForm, LoginForm
+
+def index(request):
+    return render(request, 'main/index.html')
 
 def register(request):
     if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('index')
     else:
-        form = UserRegistrationForm()
+        form = RegisterForm()
     return render(request, 'main/register.html', {'form': form})
 
-@login_required
-def index(request):
-    guides = RecyclingGuide.objects.all()
-    return render(request, 'main/index.html', {'guides': guides})
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('index')
+    else:
+        form = LoginForm()
+    return render(request, 'main/login.html', {'form': form})

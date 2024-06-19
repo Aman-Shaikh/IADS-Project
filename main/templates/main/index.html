@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home - RecycleWise</title>
-    <link rel="stylesheet" href="{% static 'main/styles.css' %}">
-</head>
-<body>
-    <h2>Welcome to RecycleWise</h2>
-    <ul>
-        {% for guide in guides %}
-            <li>{{ guide.title }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'main/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Welcome to RecycleWise</h2>
+<p>Your guide to effective waste management practices.</p>
+{% endblock %}

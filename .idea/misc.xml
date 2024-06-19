@@ -4,4 +4,6 @@
     <option name="sdkName" value="Python 3.12 (RecycleWise) (2)" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (djangoProject)" project-jdk-type="Python SDK" />
+>>>>>>> a9f58e98e219ce98eae53e4bbbb5de034af9a38e
 </project>
