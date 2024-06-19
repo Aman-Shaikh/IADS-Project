@@ -15,4 +15,4 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RecycleWise.settings')
 
 application = get_wsgi_application()
 
-# git push testing 2
+# git push testing
