@@ -6,7 +6,7 @@ from .forms import RegisterForm, LoginForm
 
 def index(request):
     return render(request, 'main/index.html')
-
+#conflict checking
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
