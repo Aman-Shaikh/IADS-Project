@@ -84,3 +84,20 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+
+/* Add custom styles for user app templates here */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form button {
+    margin-top: 10px;
+}

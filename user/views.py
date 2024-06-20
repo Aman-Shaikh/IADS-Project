@@ -1,71 +1,31 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+# user/views.py
+
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegistrationForm, UserLoginForm, ProfileEditForm, ForgotPasswordForm
-from .models import UserProfile, UserHistory, UserSession
-from django.http import HttpResponse
-
-
-def register(request):
-    if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('index')
-    else:
-        form = UserRegistrationForm()
-    return render(request, 'main/register.html', {'form': form})
-
-
-def login_view(request):
-    if request.method == 'POST':
-        form = UserLoginForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect('index')
-    else:
-        form = UserLoginForm()
-    return render(request, 'main/login.html', {'form': form})
-
+from django.contrib.auth.views import PasswordResetView
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from .forms import ProfileEditForm, ForgotPasswordForm
 
 @login_required
 def profile_edit(request):
     if request.method == 'POST':
-        form = ProfileEditForm(request.POST, instance=request.user.userprofile)
+        form = ProfileEditForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect('profile_edit')
     else:
-        form = ProfileEditForm(instance=request.user.userprofile)
+        form = ProfileEditForm(instance=request.user)
     return render(request, 'user/profile_edit.html', {'form': form})
 
-
-def forgot_password(request):
-    if request.method == 'POST':
-        form = ForgotPasswordForm(request.POST)
-        if form.is_valid():
-            # Implement password reset logic here
-            pass
-    else:
-        form = ForgotPasswordForm()
-    return render(request, 'user/forgot_password.html', {'form': form})
-
+class ForgotPasswordView(PasswordResetView):
+    template_name = 'user/forgot_password.html'
+    form_class = ForgotPasswordForm
 
 @login_required
 def user_history(request):
-    history = UserHistory.objects.filter(user=request.user)
-    return render(request, 'user/user_history.html', {'history': history})
+    # Implement user history retrieval logic here
+    return render(request, 'user/user_history.html')
 
-
-def user_history_view(request):
-    if request.user.is_authenticated:
-        sessions = UserSession.objects.filter(user=request.user)
-        response = '<h2>User History</h2><ul>'
-        for session in sessions:
-            response += f'<li>{session.created_at}: {session.session_data}</li>'
-        response += '</ul>'
-        return HttpResponse(response)
-    else:
-        return redirect('login')
+def logout(request):
+    # Implement user history retrieval logic here
+    return render(request, 'user/logged_out.html')
