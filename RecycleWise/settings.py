@@ -45,13 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main',
-    'user',
-    'guides',
-    'search',
-    'contact',
-    'recycling_centers',
-    'uploads',
+    'authentication',
 ]
 
 
@@ -135,7 +129,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "main/static",
+    BASE_DIR / "static",
 ]
 
 

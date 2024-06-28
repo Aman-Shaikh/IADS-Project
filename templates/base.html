@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Recycle Wise{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .navbar-custom {
+            background-color: #90ee90; /* light green */
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: #000; /* dark black */
+            font-size: 1.2em; /* larger text */
+            font-weight: bold; /* make the text bold */
+        }
+        
+        .navbar-brand {
+            font-size: 2.0em !important;
+        }
+        
+        .navbar-custom .nav-link:hover {
+            color: #555; /* slightly lighter on hover */
+        }
+        h1 {
+            color: #000; /* dark black */
+            font-size: 2.5em; /* larger text for the heading */
+        }
+        p {
+            color: #000; /* dark black */
+            font-size: 1.2em; /* larger text for the paragraph */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-custom">
+        <div class="container d-flex justify-content-center">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+                {% load static %}
+                <img src="{% static 'recycle-symbol.png' %}" width="50" height="50" class="d-inline-block align-top mr-2" alt="">
+                Recycle Wise
+            </a>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        {% block content %}
+        <!-- Content for each page will be inserted here -->
+        {% endblock %}
+    </div>
+</body>
+</html>
