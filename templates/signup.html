@@ -1,17 +1,89 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container">
-        <h2>Sign Up</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header text-center bg-success text-white">
+                    <h2>Sign Up</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_username">Username</label>
+                            {{ form.username }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_email">Email</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_password1">Password</label>
+                            {{ form.password1 }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_password2">Confirm Password</label>
+                            {{ form.password2 }}
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <small class="text-muted">Already have an account? <a href="{% url 'login' %}">Login</a></small>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
+
+<style>
+    .navbar-custom {
+        background-color: #90ee90; /* light green */
+    }
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+        color: #000; /* dark black */
+        font-size: 1.2em; /* larger text */
+        font-weight: bold; /* make the text bold */
+    }
+
+    .navbar-brand {
+        font-size: 2.0em !important;
+    }
+
+    .navbar-custom .nav-link:hover {
+        color: #555; /* slightly lighter on hover */
+    }
+    h2 {
+        color: #000; /* dark black */
+        font-size: 2.0em; /* larger text for the heading */
+    }
+    .form-group label {
+        color: #000; /* dark black */
+        font-size: 1.1em; /* larger text for the label */
+    }
+    .form-control {
+        font-size: 1.1em; /* larger text for the form control */
+    }
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    .btn-success:hover {
+        background-color: #218838;
+    }
+    .card-footer a {
+        color: #28a745;
+        font-weight: bold;
+    }
+    .card-footer a:hover {
+        color: #218838;
+    }
+</style>
