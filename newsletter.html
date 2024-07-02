@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effective Waste Management Newsletter</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Effective Waste Management Newsletter</h1>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h2>About Recycling</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod magna sit amet ante scelerisque condimentum. 
+                    Vivamus convallis varius tellus sit amet bibendum. Fusce sed ipsum et turpis lobortis ultrices vel sit amet leo.
+                </p>
+                <h2>Finding Local Recycling Centers</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod magna sit amet ante scelerisque condimentum. 
+                    Vivamus convallis varius tellus sit amet bibendum. Fusce sed ipsum et turpis lobortis ultrices vel sit amet leo.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h2>Find Your Nearest Recycling Center</h2>
+                <form method="post" action="{% url 'find_recycling_center' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="address">Enter Your Address:</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Find Recycling Center</button>
+                </form>
+                {% if center %}
+                    <div class="mt-4">
+                        <h4>Nearest Recycling Center:</h4>
+                        <p>{{ center }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
