@@ -65,8 +65,7 @@ ROOT_URLCONF = 'RecycleWise.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,6 +122,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+#Email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.your-email-provider.com'
+EMAIL_PORT = 2525  # or 465 for SSL
+EMAIL_USE_TLS = True  # Use True for port 587, False for 465
+EMAIL_HOST_USER = 'amanshaikh205276@gmail.com'
+EMAIL_HOST_PASSWORD = 'Amanshaikh123#$'
+DEFAULT_FROM_EMAIL = 'amanshaikh205276@gmail.com'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

@@ -25,7 +25,10 @@
                     </form>
                 </div>
                 <div class="card-footer text-center">
-                    <small class="text-muted">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></small>
+                    <small class="text-muted">
+                        Don't have an account? <a href="{% url 'signup' %}">Sign up</a><br>
+                          <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                    </small>
                 </div>
             </div>
         </div>
