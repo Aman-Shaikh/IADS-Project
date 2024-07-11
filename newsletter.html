@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effective Waste Management Newsletter</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Embedded CSS Styles -->
+    <style>
+        /* Global styles */
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Custom styles for the newsletter */
+        .container {
+            max-width: 900px; /* Adjust as per your design */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        h2 {
+            margin-top: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        /* Optional: Adjust margins or padding for spacing consistency */
+        .mt-4 {
+            margin-top: 1.5rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        /* Optional: Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Effective Waste Management Newsletter</h1>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h2>About Recycling</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod magna sit amet ante scelerisque condimentum. 
+                    Vivamus convallis varius tellus sit amet bibendum. Fusce sed ipsum et turpis lobortis ultrices vel sit amet leo.
+                </p>
+                <h2>Finding Local Recycling Centers</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod magna sit amet ante scelerisque condimentum. 
+                    Vivamus convallis varius tellus sit amet bibendum. Fusce sed ipsum et turpis lobortis ultrices vel sit amet leo.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h2>Find Your Nearest Recycling Center</h2>
+                <form id="recyclingForm" method="post" action="{% url 'find_recycling_center' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="address">Enter Your Address:</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Find Recycling Center</button>
+                </form>
+                {% if center %}
+                    <div class="mt-4">
+                        <h4>Nearest Recycling Center:</h4>
+                        <p>{{ center }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript for form submission popup -->
+    <script>
+        // Wait for the document to be fully loaded
+        $(document).ready(function() {
+            // Handle form submission
+            $('#recyclingForm').submit(function(event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+
+                // Perform your form submission AJAX request here (if needed)
+                // For demonstration purposes, simulate a delay with setTimeout
+                setTimeout(function() {
+                    // Show a pop-up or alert
+                    alert('Form submitted successfully!'); // Replace with your preferred popup method
+
+                    // Optionally, reset the form after submission
+                    $('#recyclingForm')[0].reset();
+                }, 1000); // Simulated delay of 1 second (1000 milliseconds)
+            });
+        });
+    </script>
+</body>
+</html>
+
