@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/interactivetools.css' %}">
+{% block content %}
+<div class="container mt-5">
+    <h2>Searchable Database</h2>
+    <p>Find out how to recycle specific items and locate local recycling centers.</p>
+    <form method="GET" action="{% url 'searchable_database' %}" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search for an item" aria-label="Search" name="q">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div class="mt-4">
+        {% if query %}
+        <h5>Search results for "{{ query }}":</h5>
+        <ul>
+            {% for item in results %}
+            <li>{{ item }}</li>
+            {% empty %}
+            <li>No results found</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -8,4 +8,5 @@ urlpatterns = [
     path('', include('authentication.urls')),
     path('', include('getting_started.urls')),
     # path('', include('userfeedback.urls')),
+    path('interactivetools/', include('interactivetools.urls')),
 ]
