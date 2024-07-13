@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/interactivetools.css' %}">
+{% block title %}Searchable Database{% endblock %}
 {% block content %}
-<div class="container mt-5">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/interactivetools.css' %}">
+</head>
+<div class="container-fluid mt-5">
     <h2>Searchable Database</h2>
     <p>Find out how to recycle specific items and locate local recycling centers.</p>
     <form method="GET" action="{% url 'searchable_database' %}" class="form-inline my-2 my-lg-0">
@@ -14,7 +17,9 @@
         <h5>Search results for "{{ query }}":</h5>
         <ul>
             {% for item in results %}
-            <li>{{ item }}</li>
+            <li>
+                <strong>{{ item.name }}:</strong> {{ item.description }}
+            </li>
             {% empty %}
             <li>No results found</li>
             {% endfor %}
