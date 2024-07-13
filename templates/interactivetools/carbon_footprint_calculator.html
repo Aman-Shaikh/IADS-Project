@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/interactivetools.css' %}">
+{% block title %}Carbon Footprint Calculator{% endblock %}
 {% block content %}
-<div class="container mt-5">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/interactivetools.css' %}">
+</head>
+<div class="container-fluid mt-5">
     <h2>Carbon Footprint Calculator</h2>
     <p>Calculate your environmental impact and learn how to reduce it.</p>
     <form method="POST" action="{% url 'carbon_footprint_calculator' %}">
@@ -15,7 +18,14 @@
     </form>
     <div class="mt-4">
         {% if carbon_footprint %}
-        <h5>Your Estimated Carbon Footprint: {{ carbon_footprint }} kg CO2 per year</h5>
+        <h5>Your Estimated Carbon Footprint: {{ carbon_footprint.carbon_footprint }} kg CO2 per year</h5>
+        <h6>Category: {{ category }}</h6>
+        <h6>Suggestions to reduce your carbon footprint:</h6>
+        <ul>
+            {% for suggestion in suggestions %}
+            <li>{{ suggestion }}</li>
+            {% endfor %}
+        </ul>
         {% endif %}
     </div>
 </div>
