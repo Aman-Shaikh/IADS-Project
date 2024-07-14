@@ -1,0 +1,16 @@
+{% extends 'community_engagement/base.html' %}
+
+{% block title %}Create New Thread{% endblock %}
+
+{% block content %}
+    <header>
+        <h2>Create New Thread</h2>
+    </header>
+    <main>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create Thread</button>
+        </form>
+    </main>
+{% endblock %}

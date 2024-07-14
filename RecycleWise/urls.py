@@ -10,5 +10,5 @@ urlpatterns = [
     path('upcoming_events/', include('upcomming_events.urls')),
     path('', include('userfeedback.urls')),
     path('interactivetools/', include('interactivetools.urls')),
-
+    path('community_engagement/', include('community_engagement.urls')),
 ]

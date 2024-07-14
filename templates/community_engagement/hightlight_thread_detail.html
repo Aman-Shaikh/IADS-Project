@@ -1,0 +1,32 @@
+{% extends 'community_engagement/base.html' %}
+
+{% block title %}{{ thread.title }}{% endblock %}
+
+{% block content %}
+    <header>
+        <h2>{{ thread.title }}</h2>
+    </header>
+    <main>
+        <article>
+            <p>{{ thread.content }}</p>
+            <small>By {{ thread.created_by.username }} on {{ thread.created_at }}</small>
+        </article>
+        <section>
+            <h3>Comments</h3>
+            <ul>
+                {% for comment in comments %}
+                    <li>
+                        <p>{{ comment.content }}</p>
+                        <small>By {{ comment.created_by.username }} on {{ comment.created_at }}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+            <h4>Add a Comment</h4>
+            <form method="post" action="{% url 'comment_create' thread.id %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Add Comment</button>
+            </form>
+        </section>
+    </main>
+{% endblock %}

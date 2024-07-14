@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'authentication',
     'getting_started',
     'interactivetools',
-    'upcomming_events'
+    'upcomming_events',
+    'community_engagement'
     # 'crispy_forms',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
