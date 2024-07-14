@@ -11,6 +11,5 @@ git push -u origin your-name
 
 
 
-
 for creating your app
 python manage.py startapp [appname]
