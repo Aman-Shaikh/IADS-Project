@@ -1,0 +1,21 @@
+{% extends 'community_engagement/base.html' %}
+
+{% block title %}Forum Highlights{% endblock %}
+
+{% block content %}
+    <header>
+        <h2>Forum Highlights</h2>
+        <a href="{% url 'highlight_thread_create' %}">Create New Thread</a>
+    </header>
+    <main>
+        <ul>
+            {% for thread in threads %}
+                <li>
+                    <a href="{% url 'highlight_thread_detail' thread.id %}">{{ thread.title }}</a>
+                    <p>{{ thread.snippet }}</p>
+                    <small>By {{ thread.created_by.username }} on {{ thread.created_at }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+{% endblock %}
