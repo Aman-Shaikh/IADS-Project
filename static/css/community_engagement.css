@@ -94,14 +94,17 @@ footer {
 }
 
 .thread-card {
-    background-color: #4CAF50;
-    border: 1px solid #0e0e0e;
+    background-color: #399e41;
+    border: 1px solid #ddd;
     border-radius: 4px;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    width: calc(33.333% - 20px);
     box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  width: 40%;
+}
+.container {
+  padding: 2px 16px;
 }
 
 .thread-card:hover {
