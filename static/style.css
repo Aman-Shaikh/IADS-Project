@@ -1,0 +1,69 @@
+/* General styles for the site */
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+    color: #000; /* Dark black for headings */
+    font-weight: bold;
+}
+
+p, li {
+    color: #000; /* Dark black for text */
+    font-size: 1.2em; /* Larger text for readability */
+}
+
+.container {
+    margin-top: 20px;
+}
+
+/* Navbar styles */
+.navbar-custom {
+    background-color: #90ee90; /* Light green */
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #000; /* Dark black */
+    font-size: 1.2em; /* Larger text */
+    font-weight: bold; /* Make the text bold */
+}
+
+.navbar-brand {
+    font-size: 2.0em !important;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #555; /* Slightly lighter on hover */
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #90ee90; /* Light green for buttons */
+    border-color: #90ee90;
+}
+
+.btn-primary:hover {
+    background-color: #76c576; /* Slightly darker green on hover */
+    border-color: #76c576;
+}
+
+/* List group item styles */
+.list-group-item {
+    background-color: #f9f9f9; /* Light background for list items */
+    border: 1px solid #ddd; /* Light border for list items */
+    padding: 15px; /* Add some padding */
+    margin-bottom: 10px; /* Space between items */
+}
+
+/* Form styles */
+form {
+    margin-bottom: 30px;
+}
+
+/* Custom image size */
+.fixed-size {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
