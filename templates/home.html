@@ -69,7 +69,7 @@
                 <img src="{% static 'images/forum.jpg' %}" class="img-fluid mb-3 fixed-size" alt="Forum">
                 <h3>Forum Highlights</h3>
                 <p>Join the discussion and share your recycling tips and experiences.</p>
-                <a href="#" class="btn btn-secondary">Visit Forum</a>
+                <a href="{%  url 'highlight_thread_list' %}" class="btn btn-secondary">Visit Forum</a>
             </div>
             <div class="col-md-6 text-center">
                 <img src="{% static 'images/user-stories.jpg' %}" class="img-fluid mb-3 fixed-size" alt="User Stories">
@@ -88,7 +88,7 @@
                 <img src="{% static 'images/clean-up.jpg' %}" class="img-fluid mb-3 fixed-size" alt="Community Clean-Up">
                 <h3>Community Clean-Up</h3>
                 <p>Join us for a community clean-up event this Saturday.</p>
-                <a href="#" class="btn btn-secondary">Learn More</a>
+                <a href="{%  url 'event-list' %}" class="btn btn-secondary">Learn More</a>
             </div>
             <div class="col-md-6 text-center">
                 <img src="{% static 'images/workshop.jpg' %}" class="img-fluid mb-3 fixed-size" alt="Recycling Workshop">
@@ -137,15 +137,15 @@
         </div>
     </div>
     
-     <!-- Sustainability Tips Section -->
+     <!-- User Feedback Section -->
     <div class="container mt-5 mb-5">
         <h2 class="text-center">User Feedback</h2>
         <div class="row mt-4">
             <div class="col-md-12 text-center">
                 <img src="{% static 'images/tips.jpg' %}" class="img-fluid mb-3 fixed-size" alt="Quick Tips">
-                <h3>Quick Tips</h3>
-                <p>Adopt these simple tips to reduce waste and live sustainably.</p>
-                <a href="#" class="btn btn-secondary">Get Tips</a>
+                <h3>User Feedback</h3>
+                <p>Please provide your feedback to help us improve our tips for reducing waste and living sustainably.</p>
+                <a href="{%  url 'userfeedback' %}" class="btn btn-secondary">Give Feedback</a>
             </div>
         </div>
     </div>
