@@ -1,34 +1,43 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import HighlightThread, Comment
-from .ce_forms import HighlightThreadForm, CommentForm
+from .forms import HighlightThreadForm, CommentForm
 
-class HighlightThreadListView(ListView):
-    model = HighlightThread
-    template_name = 'community_engagement/highlight_thread_list.html'
-    context_object_name = 'threads'
+def HighlightThreadListView(request):
+    threads = HighlightThread.objects.all()
+    return render(request, 'community_engagement/highlight_thread_list.html', {'threads': threads})
 
-class HighlightThreadDetailView(DetailView):
-    model = HighlightThread
-    template_name = 'community_engagement/highlight_thread_detail.html'
-    context_object_name = 'thread'
+@login_required
+def HighlightThreadCreateView(request):
+    if request.method == 'POST':
+        form = HighlightThreadForm(request.POST)
+        if form.is_valid():
+            thread = form.save(commit=False)
+            thread.created_by = request.user
+            thread.save()
+            return redirect('highlight_thread_list')
+    else:
+        form = HighlightThreadForm()
+    return render(request, 'community_engagement/highlight_thread_create.html', {'form': form})
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['comments'] = Comment.objects.filter(thread=self.object)
-        context['form'] = CommentForm()
-        return context
+def HighlightThreadDetailView(request, pk):
+    thread = get_object_or_404(HighlightThread, pk=pk)
+    comments = thread.comments.all()
 
-class HighlightThreadCreateView(LoginRequiredMixin, CreateView):
-    model = HighlightThread
-    form_class = HighlightThreadForm
-    template_name = 'community_engagement/highlight_thread_create.html'
-    success_url = '/forum-highlights/'
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.thread = thread
+            comment.created_by = request.user
+            comment.save()
+            return redirect('highlight_thread_detail', pk=thread.pk)
+    else:
+        form = CommentForm()
 
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
+    return render(request, 'community_engagement/highlight_thread_detail.html', {'thread': thread, 'comments': comments, 'form': form})
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
