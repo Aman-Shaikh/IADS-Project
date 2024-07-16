@@ -3,19 +3,48 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    </head>
     <!-- Hero Section -->
-    <div class="jumbotron text-center" style="background-color: #e0ffe0; margin-bottom: 50px;">
-        <h1 class="display-4">Make a Difference – Learn to Recycle Right!</h1>
-        <p class="lead">Discover tips, tools, and community support to help you recycle effectively.</p>
-        <a class="btn btn-primary btn-lg" href="{% url 'getting_started' %}" role="button">Get Started</a>
+{#    <div class="jumbotron text-center" style="background-color: #e0ffe0; margin-bottom: 50px;">#}
+{#        <h1 class="display-4">Make a Difference – Learn to Recycle Right!</h1>#}
+{#        <p class="lead">Discover tips, tools, and community support to help you recycle effectively.</p>#}
+{#        <a class="btn btn-primary btn-lg" href="{% url 'getting_started' %}" role="button">Get Started</a>#}
+{#    </div>#}
+    <div id="top"></div>
+    <!--Slider-->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner">
+          {% load static %}
+        <div class="carousel-item active">
+          <img class="d-block w-100 img1" src="{% static 'images/slide2.jpg' %}" alt="First slide">
+              <div class="carousel-caption d-none d-md-block">
+                  <h1>Welcome to Recycle Wise</h1>
+                  <h4>Your ultimate guide to recycling effectively and sustainably. Join our community and make a positive impact on the environment.</h4>
+              </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100 img2" src="{% static 'images/slide3.jpg' %}" alt="Second slide">
+             <div class="carousel-caption d-none d-md-block">
+                  <h1>Make a Difference – Learn to Recycle Right!</h1>
+                  <h4>Discover tips, tools, and community support to help you recycle effectively.</h4>
+              </div>
+        </div>
+      </div>
     </div>
 
     <!-- Introduction Section -->
-    <div class="container text-center" style="margin-bottom: 50px;">
-        <h2>Welcome to Recycle Wise</h2>
-        <p>Your ultimate guide to recycling effectively and sustainably. Join our community and make a positive impact on the environment.</p>
-    </div>
-
+{#    <div class="container text-center" style="margin-bottom: 50px;">#}
+{#        <h2>Welcome to Recycle Wise</h2>#}
+{#        <p>Your ultimate guide to recycling effectively and sustainably. Join our community and make a positive impact on the environment.</p>#}
+{#    </div>#}
+    <h1 class="text-center mt-5 py-2" style="background-color: #009900;border-radius: 30px;color: white">FEATURES</h1>
     <!-- Educational Content Highlights -->
     <div class="container mt-5" style="margin-bottom: 50px;">
         <h2 class="text-center">Recycling Guides</h2>
@@ -48,14 +77,14 @@
         <div class="row mt-4">
             <div class="col-md-6 text-center">
                 <img src="{% static 'images/database.jpg' %}" class="img-fluid mb-3 fixed-size" alt="Searchable Database">
-                <h3>Searchable Database</h3>
-                <p>Find out how to recycle specific items and locate local recycling centers.</p>
+                <h3>How to Recycle</h3>
+                <p>Find out how to recycle specific items</p>
                 <a href="{% url 'searchable_database' %}" class="btn btn-secondary">Try It Now</a>
             </div>
             <div class="col-md-6 text-center">
                 <img src="{% static 'images/carbon-footprint.jpg' %}" class="img-fluid mb-3 fixed-size" alt="Carbon Footprint Calculator">
                 <h3>Carbon Footprint Calculator</h3>
-                <p>Calculate your environmental impact and learn how to reduce it.</p>
+                <p>Calculate your environmental impact, learn how to reduce it.</p>
                 <a href="{%  url 'carbon_footprint_calculator' %}" class="btn btn-secondary">Calculate Now</a>
             </div>
         </div>

@@ -2,54 +2,25 @@
 <html>
 <head>
     <title>{% block title %}Recycle Wise{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-    .navbar-custom {
-        background-color: #90ee90; /* light green */
-    }
-    .navbar-custom .navbar-brand,
-    .navbar-custom .nav-link {
-        color: #000; /* dark black */
-        font-size: 1.2em; /* larger text */
-        font-weight: bold; /* make the text bold */
-    }
-
-    .navbar-brand {
-        font-size: 2.0em !important;
-    }
-
-    .navbar-custom .nav-link:hover {
-        color: #555; /* slightly lighter on hover */
-    }
-    h1 {
-        color: #000; /* dark black */
-        font-size: 2.5em; /* larger text for the heading */
-    }
-    p {
-        color: #000; /* dark black */
-        font-size: 1.2em; /* larger text for the paragraph */
-    }
-    .fixed-size {
-        width: 300px;
-        height: 200px;
-        object-fit: cover;
-    }
-</style>
-
 </head>
 <body>
     <nav class="navbar navbar-light navbar-custom">
         <div class="container-fluid d-flex justify-content-center">
             <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
                 {% load static %}
-                <img src="{% static 'recycle-symbol.png' %}" width="50" height="50" class="d-inline-block align-top mr-2" alt="">
+                <img src="{% static 'recycle-symbol-white.png' %}" width="50" height="50" class="d-inline-block align-top mr-2" alt="">
                 Recycle Wise
             </a>
         </div>
     </nav>
+
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,6 +33,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -86,10 +60,65 @@
             </div>
         </div>
     </nav>
-    <div class="container mt-4">
+    <div class="container-fluid">
         {% block content %}
         <!-- Content for each page will be inserted here -->
         {% endblock %}
     </div>
+    <footer class="container-fluid px-3 py-5">
+        <div class="row text-center">
+            <div class="col-12 col-md-6 col-lg-3">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                {% load static %}
+                <img src="{% static 'recycle-symbol-white.png' %}" width="50" height="50" class="d-inline-block align-top mr-2" alt="">
+                Recycle Wise
+            </a>
+                <div class="social-icons mt-3">
+                <a href="https://www.instagram.com" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                <a href="https://www.facebook.com" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-facebook fa-2x"></i>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+            </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <h4 style="color: white">Important Links</h4>
+                <ul class="footer-nav" style="list-style: none; padding-left: 0;">
+                    <li class="footer-item active">
+                        <a class="footer-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="footer-item">
+                        <a class="footer-link" href="#">About Us</a>
+                    </li>
+                    <li class="footer-item">
+                        <a class="footer-link" href="#">Contact Us</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="footer-item">
+                        <a class="footer-link" href="#">Profile</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                 <iframe
+                    width="100%"
+                    height="200"
+                    frameborder="0"
+                    style="border:0"
+                    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d94439.33903350988!2d-83.08528306688218!3d42.2949715052785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1suniversity%20of%20windsor!5e0!3m2!1sen!2sca!4v1720647997087!5m2!1sen!2sca"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <p style="color: white">Informational website which will be dedicated to educating users on effective waste management practices.</p>
+            </div>
+        </div>
+    </footer>
+    <p class="text-center mt-1" style="color: #009900">RecycleWise 2024 | Copyright</p>
 </body>
 </html>
