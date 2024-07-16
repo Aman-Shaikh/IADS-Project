@@ -1,9 +1,14 @@
-{% extends 'community_engagement/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ thread.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/community_engagement.css' %}">
+</head>
+<body>
 
-{% block title %}{{ thread.title }}{% endblock %}
-
-{% block content %}
-    <header>
+<header>
     <h1>{{ thread.title }}</h1>
 </header>
 
@@ -16,7 +21,7 @@
     <section>
         <h2>Comments</h2>
         <ul>
-            {% for comment in comments %}
+            {% for comment in thread.comments.all %}
                 <li>
                     <p>{{ comment.content }}</p>
                     <small>By {{ comment.created_by.username }} on {{ comment.created_at }}</small>
@@ -25,7 +30,7 @@
         </ul>
 
         <h3>Add a Comment</h3>
-        <form method="post">
+        <form method="post" action="{% url 'comment_create' thread.pk %}">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Add Comment</button>
@@ -36,4 +41,6 @@
 <footer>
     <p>&copy; 2024 RecycleWise. All rights reserved.</p>
 </footer>
-{% endblock %}
+
+</body>
+</html>
