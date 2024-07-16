@@ -11,7 +11,7 @@ class Review(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(choices=[(i, str(i)) for i in range(1, 6)])
-    feedback = models.TextField(max_length=250)
+    feedback = models.TextField(max_length=100)
     review_date = models.DateTimeField(default=timezone.now)
     service = models.CharField(max_length=20, choices=SERVICE_CHOICES, default='ES')
 
