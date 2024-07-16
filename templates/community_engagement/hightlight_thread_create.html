@@ -4,13 +4,19 @@
 
 {% block content %}
     <header>
-        <h2>Create New Thread</h2>
-    </header>
-    <main>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Create Thread</button>
-        </form>
-    </main>
+    <h1>Create New Thread</h1>
+</header>
+
+<main>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Thread</button>
+    </form>
+</main>
+
+<footer>
+    <p>&copy; 2024 RecycleWise. All rights reserved.</p>
+</footer>
+
 {% endblock %}
