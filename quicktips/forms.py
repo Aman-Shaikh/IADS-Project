@@ -1,7 +1,8 @@
 from django import forms
-from .models import QuickTip
+from .models import WasteType
 
-class QuickTipForm(forms.ModelForm):
+
+class WasteTypeForm(forms.ModelForm):
     class Meta:
-        model = QuickTip
+        model = WasteType
         fields = ['waste_choices']

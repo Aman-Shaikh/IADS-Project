@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import QuickTip, Tips
+from .models import WasteType, Tip
 # Register your models here.
 
-admin.site.register(QuickTip)
-admin.site.register(Tips)
+admin.site.register(WasteType)
+admin.site.register(Tip)

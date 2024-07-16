@@ -1,16 +1,17 @@
 from django.shortcuts import render
-from .forms import QuickTipForm
-from .models import QuickTip, Tips
+from .forms import WasteTypeForm
+from .models import WasteType, Tip
+
 
 def quicktips_view(request):
-    form = QuickTipForm(request.GET)
+    form = WasteTypeForm(request.GET)
     tips = None
     waste_choice_display = None
 
     if form.is_valid():
         waste_choice_key = form.cleaned_data['waste_choices']
-        tips = Tips.objects.filter(waste_type__waste_choices=waste_choice_key)
-        waste_choice_display = dict(QuickTip.Waste_Options).get(waste_choice_key)
+        tips = Tip.objects.filter(waste_type__waste_choices=waste_choice_key)
+        waste_choice_display = dict(WasteType.Waste_Options).get(waste_choice_key)
 
     return render(request, 'quicktips/get_recycletips.html', {
         'tips': tips,
