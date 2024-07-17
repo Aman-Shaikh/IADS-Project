@@ -1,7 +1,6 @@
-from django.shortcuts import render
-from .forms import WasteTypeForm
+from django.shortcuts import render, redirect
+from .forms import WasteTypeForm, TipForm
 from .models import WasteType, Tip
-
 
 def quicktips_view(request):
     form = WasteTypeForm(request.GET)
@@ -18,3 +17,14 @@ def quicktips_view(request):
         'form': form,
         'waste_choice_display': waste_choice_display
     })
+
+def add_tip_view(request):
+    if request.method == 'POST':
+        form = TipForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'quicktips/thank_you.html')
+    else:
+        form = TipForm()
+
+    return render(request, 'quicktips/add_tip.html', {'form': form})

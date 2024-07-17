@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}RecycleWise{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/community_engagement.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Forum Highlights</h1>
+        <a href="{% url 'highlight_thread_create' %}" class="create-thread-btn">Create New Thread</a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'highlight_thread_create' %}">Create a Thread</a></li>
+            <li><a href="#">Add a Comment</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+        <!-- Main content will be injected here -->
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 RecycleWise. All rights reserved.</p>
+    </footer>
+</body>
+</html>

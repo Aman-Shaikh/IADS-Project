@@ -12,6 +12,8 @@
         <button type="submit" class="btn btn-primary">Get Tips</button>
     </form>
 
+    <a href="{% url 'add_tip' %}" class="btn btn-secondary mb-4">Add a New Tip</a>
+
     {% if waste_choice_display %}
         <h2 class="mt-4">Tips for {{ waste_choice_display }}</h2>
         <ul class="list-group">

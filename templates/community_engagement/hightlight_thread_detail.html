@@ -1,0 +1,39 @@
+{% extends 'community_engagement/base.html' %}
+
+{% block title %}{{ thread.title }}{% endblock %}
+
+{% block content %}
+    <header>
+    <h1>{{ thread.title }}</h1>
+</header>
+
+<main>
+    <article>
+        <p>{{ thread.content }}</p>
+        <small>By {{ thread.created_by.username }} on {{ thread.created_at }}</small>
+    </article>
+
+    <section>
+        <h2>Comments</h2>
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    <p>{{ comment.content }}</p>
+                    <small>By {{ comment.created_by.username }} on {{ comment.created_at }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h3>Add a Comment</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Comment</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 RecycleWise. All rights reserved.</p>
+</footer>
+{% endblock %}

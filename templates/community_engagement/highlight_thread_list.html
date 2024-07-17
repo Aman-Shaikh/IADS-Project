@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Forum Highlights{% endblock %}
+
+{% block content %}
+  <header>
+    <h1>Forum Highlights</h1>
+    <a href="{% url 'highlight_thread_create' %}" class="create-thread-btn">Create New Thread</a>
+</header>
+   
+
+<main>
+    <div class="thread-list">
+        {% for thread in threads %}
+            <div class="card">
+                <div class="container">
+                    <a href="{% url 'highlight_thread_detail' thread.id %}" class="thread-title"><b>{{ thread.title }}</b></a>
+                    <p class="thread-snippet">{{ thread.snippet }}</p>
+                    <small class="thread-meta">By {{ thread.created_by.username }} on {{ thread.created_at }}</small>
+                </div>
+                <a href="{% url 'highlight_thread_detail' thread.id %}" class="comment-btn">Add Comment</a>
+            </div>
+        {% endfor %}
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 RecycleWise. All rights reserved.</p>
+</footer>
+
+{% endblock %}

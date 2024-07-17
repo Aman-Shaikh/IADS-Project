@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
+import ssl
+
+import certifi
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,8 +52,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'getting_started',
+<<<<<<< HEAD
     'quicktips',
     'reviews'
+=======
+    'interactivetools',
+    'upcomming_events',
+    'community_engagement'
+>>>>>>> 8d955489be6f7a659d2408d5c8e0460bf5efc0fc
     # 'crispy_forms',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -126,15 +137,16 @@ USE_I18N = True
 USE_TZ = True
 
 #Email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.your-email-provider.com'
-EMAIL_PORT = 2525  # or 465 for SSL
-EMAIL_USE_TLS = True  # Use True for port 587, False for 465
-EMAIL_HOST_USER = 'amanshaikh205276@gmail.com'
-EMAIL_HOST_PASSWORD = 'Amanshaikh123#$'
-DEFAULT_FROM_EMAIL = 'amanshaikh205276@gmail.com'
+EMAIL_BACKEND = 'authentication.custom_email_backend.CustomEmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465  # SSL port
+EMAIL_USE_TLS = False  # Disable TLS if using SSL
+EMAIL_USE_SSL = True   # Enable SSL
+EMAIL_HOST_USER = 'amanshaikh205276@gmail.com'  # Your email
+EMAIL_HOST_PASSWORD = 'ggqq lnlm wive pacq' # Your app password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Default from email
+EMAIL_SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+# EMAIL_SSL_CERTFILE = certifi.where()
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
