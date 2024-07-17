@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Recycling Workshop Events{% endblock %}
+{% block title %}Recycling Workshops{% endblock %}
 
 {% block content %}
-  <h1 class="text-center">Recycling Workshop Events</h1>
+  <h1 class="text-center">Recycling Workshops</h1>
   <ul class="list-group">
     {% for event in events %}
       <li class="list-group-item">
@@ -11,7 +11,4 @@
       </li>
     {% endfor %}
   </ul>
-  <div class="mt-4 text-center">
-    <a class="btn btn-success" href="{% url 'recycling-workshop-create' %}">Create New Recycling Workshop Event</a>
-  </div>
 {% endblock %}

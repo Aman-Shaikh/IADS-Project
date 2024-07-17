@@ -1,33 +1,79 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Event, RSVP
-from .forms import (
-    CommunityCleanUpForm, CommunityCleanUpRSVPForm, RecyclingWorkshopForm, RecyclingWorkshopRSVPForm
-)
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Event, RSVP, CommunityCleanUpRSVP, RecyclingWorkshopRSVP, WorkshopMaterial, WorkshopFeedback
+from .forms import CommunityCleanUpForm, RecyclingWorkshopRSVPForm, WorkshopFeedbackForm
 
-# Base views for events
-class EventListView(ListView):
+
+
+class CommunityCleanUpListView(ListView):
     model = Event
-    template_name = 'upcomming_events/event_list.html'
+    template_name = 'upcomming_events/community_cleanup_list.html'
     context_object_name = 'events'
+    queryset = Event.objects.filter(event_type='CCU')
 
-class EventDetailView(DetailView):
+class CommunityCleanUpDetailView(DetailView):
     model = Event
-    template_name = 'upcomming_events/event_detail.html'
+    template_name = 'upcomming_events/community_cleanup_detail.html'
     context_object_name = 'event'
 
-class EventCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class CommunityCleanUpRSVPView(LoginRequiredMixin, CreateView):
+    model = CommunityCleanUpRSVP
+    form_class = CommunityCleanUpForm
+    template_name = 'upcomming_events/community_cleanup_rsvp_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['event'] = get_object_or_404(Event, pk=self.kwargs['pk'])
+        return context
+
+    def form_valid(self, form):
+        form.instance.event = get_object_or_404(Event, pk=self.kwargs['pk'])
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return redirect('community-cleanup-detail', pk=self.kwargs['pk']).url
+
+
+# worskshop views
+
+class RecyclingWorkshopListView(ListView):
     model = Event
-    template_name = 'upcomming_events/event_form.html'
-    success_url = '/upcomming_events/'
+    template_name = 'upcomming_events/recycling_workshop_list.html'
+    context_object_name = 'events'
+    queryset = Event.objects.filter(event_type='RW')
 
-    def test_func(self):
-        return self.request.user.is_superuser
+class RecyclingWorkshopDetailView(DetailView):
+    model = Event
+    template_name = 'upcomming_events/recycling_workshop_detail.html'
+    context_object_name = 'event'
 
-class RSVPCreateView(LoginRequiredMixin, CreateView):
-    model = RSVP
-    template_name = 'upcomming_events/rsvp_form.html'
+class RecyclingWorkshopRSVPView(LoginRequiredMixin, CreateView):
+    model = RecyclingWorkshopRSVP
+    form_class = RecyclingWorkshopRSVPForm
+    template_name = 'upcomming_events/recycling_workshop_rsvp_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['event'] = get_object_or_404(Event, pk=self.kwargs['pk'])
+        return context
+
+    def form_valid(self, form):
+        form.instance.event = get_object_or_404(Event, pk=self.kwargs['pk'])
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return redirect('recycling-workshop-detail', pk=self.kwargs['pk']).url
+
+class WorkshopFeedbackView(LoginRequiredMixin, CreateView):
+    model = WorkshopFeedback
+    form_class = WorkshopFeedbackForm
+    template_name = 'upcomming_events/workshop_feedback_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['event'] = get_object_or_404(Event, pk=self.kwargs['pk'])
+        return context
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -35,34 +81,4 @@ class RSVPCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return redirect('event-detail', pk=self.kwargs['pk']).url
-
-# Community Clean-Up views
-class CommunityCleanUpListView(EventListView):
-    queryset = Event.objects.filter(event_type='CCU')
-    template_name = 'upcomming_events/community_cleanup_list.html'
-
-class CommunityCleanUpDetailView(EventDetailView):
-    template_name = 'upcomming_events/community_cleanup_detail.html'
-
-class CommunityCleanUpCreateView(EventCreateView):
-    form_class = CommunityCleanUpForm
-
-class CommunityCleanUpRSVPView(RSVPCreateView):
-    form_class = CommunityCleanUpRSVPForm
-    template_name = 'upcomming_events/community_cleanup_rsvp_form.html'
-
-# Recycling Workshop views
-class RecyclingWorkshopListView(EventListView):
-    queryset = Event.objects.filter(event_type='RW')
-    template_name = 'upcomming_events/recycling_workshop_list.html'
-
-class RecyclingWorkshopDetailView(EventDetailView):
-    template_name = 'upcomming_events/recycling_workshop_detail.html'
-
-class RecyclingWorkshopCreateView(EventCreateView):
-    form_class = RecyclingWorkshopForm
-
-class RecyclingWorkshopRSVPView(RSVPCreateView):
-    form_class = RecyclingWorkshopRSVPForm
-    template_name = 'upcomming_events/recycling_workshop_rsvp_form.html'
+        return redirect('recycling-workshop-detail', pk=self.kwargs['pk']).url
