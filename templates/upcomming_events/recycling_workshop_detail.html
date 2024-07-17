@@ -11,11 +11,29 @@
   <p><strong>Organizer:</strong> {{ event.organizer }}</p>
   <p><strong>Contact Email:</strong> {{ event.contact_email }}</p>
 
-  <h2 class="mt-4">RSVP</h2>
-  <a class="btn btn-success" href="{% url 'recycling-workshop-rsvp' event.pk %}">RSVP for this Event</a>
+  <a class="btn btn-success" href="{% url 'recycling-workshop-rsvp' event.pk %}">Register for this Workshop</a>
   <ul class="list-group mt-3">
-    {% for rsvp in event.rsvps.all %}
-      <li class="list-group-item">{{ rsvp.user.username }} - {{ rsvp.number_of_participants }} participants</li>
+    {% for rsvp in event.recycling_workshop_rsvps.all %}
+      <li class="list-group-item">{{ rsvp.name }} - {{ rsvp.email_id }} - {{ rsvp.gender }}</li>
     {% endfor %}
   </ul>
+
+  <h2 class="mt-4">Materials</h2>
+  <ul class="list-group">
+    {% for material in event.materials.all %}
+      <li class="list-group-item">
+        <a href="{{ material.file.url }}">{{ material.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h2 class="mt-4">Feedback</h2>
+  <a class="btn btn-primary" href="{% url 'workshop-feedback' event.pk %}">Give Feedback</a>
+{#  <ul class="list-group mt-3">#}
+{#    {% for feedback in event.feedbacks.all %}#}
+{#      <li class="list-group-item">#}
+{#        <strong>{{ feedback.user.username }}</strong>: {{ feedback.rating }} - {{ feedback.comments }}#}
+{#      </li>#}
+{#    {% endfor %}#}
+{#  </ul>#}
 {% endblock %}
