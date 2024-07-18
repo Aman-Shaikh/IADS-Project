@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Recycling Workshop Details{% endblock %}
+
+{% block content %}
+  <h1 class="text-center">{{ event.title }}</h1>
+  <p><strong>Description:</strong> {{ event.description }}</p>
+  <p><strong>Date:</strong> {{ event.date }}</p>
+  <p><strong>Time:</strong> {{ event.time }}</p>
+  <p><strong>Location:</strong> {{ event.location }}</p>
+  <p><strong>Organizer:</strong> {{ event.organizer }}</p>
+  <p><strong>Contact Email:</strong> {{ event.contact_email }}</p>
+
+  <a class="btn btn-success" href="{% url 'recycling-workshop-rsvp' event.pk %}">Register for this Workshop</a>
+  <ul class="list-group mt-3">
+    {% for rsvp in event.recycling_workshop_rsvps.all %}
+      <li class="list-group-item">{{ rsvp.name }} - {{ rsvp.email_id }} - {{ rsvp.gender }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2 class="mt-4">Materials</h2>
+  <ul class="list-group">
+    {% for material in event.materials.all %}
+      <li class="list-group-item">
+        <a href="{{ material.file.url }}">{{ material.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h2 class="mt-4">Feedback</h2>
+  <a class="btn btn-primary" href="{% url 'workshop-feedback' event.pk %}">Give Feedback</a>
+{#  <ul class="list-group mt-3">#}
+{#    {% for feedback in event.feedbacks.all %}#}
+{#      <li class="list-group-item">#}
+{#        <strong>{{ feedback.user.username }}</strong>: {{ feedback.rating }} - {{ feedback.comments }}#}
+{#      </li>#}
+{#    {% endfor %}#}
+{#  </ul>#}
+{% endblock %}

@@ -2,12 +2,15 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import HighlightThread, Comment
+from .models import HighlightThread, Comment, UserStory, StoryComment
 from .forms import HighlightThreadForm, CommentForm
+from django.urls import reverse
+from django.contrib import messages
 
 def HighlightThreadListView(request):
     threads = HighlightThread.objects.all()
     return render(request, 'community_engagement/highlight_thread_list.html', {'threads': threads})
+
 
 @login_required
 def HighlightThreadCreateView(request):
@@ -17,10 +20,11 @@ def HighlightThreadCreateView(request):
             thread = form.save(commit=False)
             thread.created_by = request.user
             thread.save()
-            return redirect('highlight_thread_list')
+            messages.success(request, 'Thread added successfully!')
+            return redirect(reverse('highlight_thread_list') + '?created=1')
     else:
         form = HighlightThreadForm()
-    return render(request, 'community_engagement/highlight_thread_create.html', {'form': form})
+    return render(request, 'community_engagement/hightlight_thread_create.html', {'form': form})
 
 def HighlightThreadDetailView(request, pk):
     thread = get_object_or_404(HighlightThread, pk=pk)
@@ -37,7 +41,7 @@ def HighlightThreadDetailView(request, pk):
     else:
         form = CommentForm()
 
-    return render(request, 'community_engagement/highlight_thread_detail.html', {'thread': thread, 'comments': comments, 'form': form})
+    return render(request, 'community_engagement/hightlight_thread_detail.html', {'thread': thread, 'comments': comments, 'form': form})
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
@@ -48,3 +52,4 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         form.instance.thread = get_object_or_404(HighlightThread, pk=self.kwargs['pk'])
         form.save()
         return redirect('highlight_thread_detail', pk=self.kwargs['pk'])
+
