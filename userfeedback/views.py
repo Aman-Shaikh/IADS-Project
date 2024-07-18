@@ -13,4 +13,4 @@ def user_feedback_view(request):
             return redirect('home')
     else:
         form = FeedbackForm()
-    return render(request, 'userfeedback/user_feedback.html', {'form': form})
+    return render(request, 'userfeedback/user_complaint.html', {'form': form})
