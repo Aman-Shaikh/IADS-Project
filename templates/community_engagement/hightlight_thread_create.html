@@ -3,17 +3,20 @@
 {% block title %}Create New Thread{% endblock %}
 
 {% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/community_engagement.css' %}">
     <header>
     <h1>Create New Thread</h1>
-</header>
+   </header>
 
 <main>
+    <div class = "form-container">
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Create Thread</button>
     </form>
-
+    </div>
 </main>
 
 {% endblock %}
