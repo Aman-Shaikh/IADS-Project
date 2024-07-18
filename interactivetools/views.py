@@ -1,6 +1,9 @@
 import csv
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.db.models import Q
+from django.contrib import messages
 from .models import RecyclableItem, CarbonFootprint
+from .forms import RecyclableItemForm
 
 
 def search_csv(item_name):
@@ -18,14 +21,29 @@ def search_csv(item_name):
 def searchable_database(request):
     query = request.GET.get('q')
     results = []
+    form = RecyclableItemForm(request.POST or None)
+    item_added = False  # Flag to indicate if an item was added
+
     if query:
-        results = RecyclableItem.objects.filter(name__icontains=query)
+        results = RecyclableItem.objects.filter(Q(name__icontains=query))
         if not results.exists():
             description = search_csv(query)
             if description:
-                RecyclableItem.objects.create(name=query, description=description)
-                results = RecyclableItem.objects.filter(name__icontains=query)
-    return render(request, 'interactivetools/searchable_database.html', {'query': query, 'results': results})
+                item = RecyclableItem(name=query, description=description)
+                item.save()
+                results = RecyclableItem.objects.filter(Q(name__icontains=query))
+
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        messages.success(request, 'Item added successfully!')
+        return redirect('searchable_database')  # Redirect to clear the form after submission
+
+    return render(request, 'interactivetools/searchable_database.html', {
+        'query': query,
+        'results': results,
+        'form': form,
+        'item_added': item_added  # Pass the flag to the template
+    })
 
 
 CARBON_FOOTPRINT_CATEGORIES = {

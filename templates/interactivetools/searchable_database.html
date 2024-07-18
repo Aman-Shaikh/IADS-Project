@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}Searchable Database{% endblock %}
-{% block content %}
 <head>
+    {% block title %}Searchable Database{% endblock %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/interactivetools.css' %}">
 </head>
-<div class="container-fluid mt-5">
+{% block content %}
+    <div class="container-fluid py-5">
     <h2>Searchable Database</h2>
     <p>Find out how to recycle specific items and locate local recycling centers.</p>
     <form method="GET" action="{% url 'searchable_database' %}" class="form-inline my-2 my-lg-0">
@@ -26,5 +26,22 @@
         </ul>
         {% endif %}
     </div>
-</div>
+    <div class="mt-4">
+        <h5>Add New Recyclable Item</h5>
+        <form method="POST" action="{% url 'searchable_database' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Add Item</button>
+        </form>
+    </div>
+
+
+{% if messages %}
+<script type="text/javascript">
+    {% for message in messages %}
+        alert("{{ message }}");
+    {% endfor %}
+</script>
+{% endif %}
+    </div>
 {% endblock %}
