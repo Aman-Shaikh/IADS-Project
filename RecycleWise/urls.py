@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('getting_started.urls')),
     path('', include('quicktips.urls')),
     path('', include('reviews.urls')),
+    path('', include('user_profile.urls')),
     # path('', include('userfeedback.urls')),
     path('upcoming_events/', include('upcomming_events.urls')),
     path('', include('userfeedback.urls')),

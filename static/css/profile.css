@@ -1,0 +1,12 @@
+/* profile.css */
+
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    border: none;
+}
+
+.img-fluid {
+    max-width: 150px;
+    height: auto;
+}

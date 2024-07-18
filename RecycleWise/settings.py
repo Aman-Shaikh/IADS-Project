@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'reviews',
     'upcomming_events',
     'interactivetools',
-    'community_engagement'
+    'community_engagement',
+    'user_profile'
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
