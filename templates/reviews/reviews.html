@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Reviews
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Submit a Review</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+    </form>
+
+    <h1 class="mt-4">All Reviews</h1>
+    <ul class="list-group">
+        {% for review in reviews %}
+            <li class="list-group-item">
+                <strong>{{ review.user.username }}</strong> reviewed <strong>{{ review.get_service_display }}</strong><br>
+                Rating: {{ review.rating }}<br>
+                Feedback: {{ review.feedback }}<br>
+                Posted on: {{ review.review_date|date:"F j, Y, g:i a" }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
