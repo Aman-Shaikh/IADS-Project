@@ -48,26 +48,15 @@
     <!-- Educational Content Highlights -->
     <div class="container mt-5" style="margin-bottom: 50px;">
         <h2 class="text-center">Recycling Guides</h2>
-        <div class="row mt-4">
+        <div class="row">
+            {% for guide in guides %}
             <div class="col-md-4 text-center">
-                {% load static %}
-                <img src="{% static 'images/paper-recycling.jpg' %}" class="img-fluid mb-3 fixed-size" alt="Paper Recycling">
-                <h3>Paper</h3>
-                <p>Learn how to recycle paper effectively and reduce waste.</p>
-                <a href="#" class="btn btn-secondary">Read More</a>
+                <img src="{{ guide.image.url }}" class="img-fluid mb-3 fixed-size" alt="{{ guide.title }}">
+                <h3>{{ guide.title }}</h3>
+                <p>{{ guide.description }}</p>
+                <a href="{% url 'recycling_guide_detail' guide.pk %}" class="btn btn-secondary">Read More</a>
             </div>
-            <div class="col-md-4 text-center">
-                <img src="{% static 'images/plastic-recycling.jpg' %}" class="img-fluid mb-3 fixed-size" alt="Plastic Recycling">
-                <h3>Plastic</h3>
-                <p>Understand the different types of plastics and how to recycle them.</p>
-                <a href="#" class="btn btn-secondary">Read More</a>
-            </div>
-            <div class="col-md-4 text-center">
-                <img src="{% static 'images/glass-recycling.jpg' %}" class="img-fluid mb-3 fixed-size" alt="Glass Recycling">
-                <h3>Glass</h3>
-                <p>Find out the best practices for recycling glass materials.</p>
-                <a href="#" class="btn btn-secondary">Read More</a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 

@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     'upcomming_events',
     'interactivetools',
     'community_engagement',
-    'user_profile'
+    'user_profile',
+    'recycling_guides'
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
