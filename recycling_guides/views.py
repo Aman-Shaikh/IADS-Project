@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import RecyclingGuide
 from .forms import RecyclingGuideForm
+from django.shortcuts import render
 
 def recycling_guides_list(request):
     guides = RecyclingGuide.objects.all()
@@ -19,6 +20,3 @@ def add_recycling_guide(request):
     else:
         form = RecyclingGuideForm()
     return render(request, 'recycling_guides/add.html', {'form': form})
-from django.shortcuts import render
-
-# Create your views here.

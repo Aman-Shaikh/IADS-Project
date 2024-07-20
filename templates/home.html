@@ -47,16 +47,20 @@
     <h1 class="text-center mt-5 py-2" style="background-color: #009900;border-radius: 30px;color: white">FEATURES</h1>
     <!-- Educational Content Highlights -->
     <div class="container mt-5" style="margin-bottom: 50px;">
-        <h2 class="text-center">Recycling Guides</h2>
-        <div class="row">
-            {% for guide in guides %}
-            <div class="col-md-4 text-center">
-                <img src="{{ guide.image.url }}" class="img-fluid mb-3 fixed-size" alt="{{ guide.title }}">
-                <h3>{{ guide.title }}</h3>
-                <p>{{ guide.description }}</p>
-                <a href="{% url 'recycling_guide_detail' guide.pk %}" class="btn btn-secondary">Read More</a>
+        <h2 class="text-center">Interactive Tools</h2>
+        <div class="row mt-4">
+            <div class="col-md-6 text-center">
+                <img src="{% static 'images/paper-recycling.jpg' %}" class="img-fluid mb-3 fixed-size" alt="See All Guides">
+                <h3>See All Recycling Guides</h3>
+                <p>Learn how to recycle specific items by seeing all guides</p>
+                <a href="{% url 'recycling_guides_list' %}" class="btn btn-secondary">See It Now</a>
             </div>
-            {% endfor %}
+            <div class="col-md-6 text-center">
+                <img src="{% static 'images/plastic-recycling.jpg' %}" class="img-fluid mb-3 fixed-size" alt="Add Guides">
+                <h3>Add Recycling Guides</h3>
+                <p>Show your contribution to the world.If you know how to recycle an item go ahead.</p>
+                <a href="{%  url 'add_recycling_guide' %}" class="btn btn-secondary">Add Guides</a>
+            </div>
         </div>
     </div>
 
