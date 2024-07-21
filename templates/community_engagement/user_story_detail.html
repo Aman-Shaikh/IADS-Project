@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ story.title }}{% endblock %}
+
+{% block content %}
+<main class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-body">
+            <h1 class="card-title">{{ story.title }}</h1>
+            <p class="card-text">{{ story.content }}</p>
+            <small class="text-muted">By {{ story.created_by.username }} on {{ story.created_at }}</small>
+            <div class="mt-3">
+{#                <a href="{% url 'like_story' story.id %}" class="btn btn-outline-success">Like</a>#}
+{#                <a href="{% url 'dislike_story' story.id %}" class="btn btn-outline-danger">Dislike</a>#}
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <h2>Comments</h2>
+        <ul class="list-group mb-4">
+            {% for comment in story.comments.all %}
+                <li class="list-group-item">
+                    <p>{{ comment.content }}</p>
+                    <small class="text-muted">By {{ comment.created_by.username }} on {{ comment.created_at }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h3>Add a Comment</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Add Comment</button>
+        </form>
+    </section>
+</main>
+{% endblock %}

@@ -1,42 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ thread.title }}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/community_engagement.css' %}">
-</head>
-<body>
-
-<header>
-    <h1>{{ thread.title }}</h1>
-</header>
-
-<main>
-    <article>
-        <p>{{ thread.content }}</p>
-        <small>By {{ thread.created_by.username }} on {{ thread.created_at }}</small>
-    </article>
-
-    <section>
-        <h2>Comments</h2>
-        <ul>
-            {% for comment in thread.comments.all %}
-                <li>
-                    <p>{{ comment.content }}</p>
-                    <small>By {{ comment.created_by.username }} on {{ comment.created_at }}</small>
-                </li>
-            {% endfor %}
-        </ul>
-
-        <h3>Add a Comment</h3>
-        <form method="post" action="{% url 'comment_create' thread.pk %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Add Comment</button>
-        </form>
-    </section>
-</main>
-
-</body>
-</html>
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block title %}{{ thread.title }}{% endblock %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#<header>#}
+{#    {% load static %}#}
+{#    <link rel="stylesheet" href="{% static 'css/community_engagement.css' %}">#}
+{#   #}
+{#    <div class="title-box">#}
+{#    <h1>{{ thread.title }}</h1>#}
+{#        </div>#}
+{#</header>#}
+{##}
+{#<main>#}
+{#    <article>#}
+{#        <div class="card">#}
+{#        <p>{{ thread.content }}</p>#}
+{#        <small>By {{ thread.created_by.username }} on {{ thread.created_at }}</small>#}
+{#            </div>#}
+{#    </article>#}
+{##}
+{#    <section>#}
+{#        <h2>Comments</h2>#}
+{#        <ul>#}
+{#            {% for comment in thread.comments.all %}#}
+{#                <li>#}
+{#                    <p>{{ comment.content }}</p>#}
+{#                    <small>By {{ comment.created_by.username }} on {{ comment.created_at }}</small>#}
+{#                </li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{##}
+{#        <h3>Add a Comment</h3>#}
+{#        <form method="post" action="{% url 'comment_create' thread.pk %}">#}
+{#            {% csrf_token %}#}
+{#            {{ form.as_p }}#}
+{#            <button type="submit">Add Comment</button>#}
+{#        </form>#}
+{#    </section>#}
+{#</main>#}
+{#    #}
+{#{% endblock %}#}
