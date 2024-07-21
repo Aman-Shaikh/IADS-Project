@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import HighlightThread, Comment, UserStory, StoryComment
-from .forms import HighlightThreadForm, CommentForm
-from django.urls import reverse
+from .forms import HighlightThreadForm, CommentForm, UserStoryForm, StoryCommentForm
+from django.urls import reverse, reverse_lazy
 from django.contrib import messages
 
 def HighlightThreadListView(request):
@@ -53,3 +53,49 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         form.save()
         return redirect('highlight_thread_detail', pk=self.kwargs['pk'])
 
+# User Stories Views
+class UserStoryListView(ListView):
+    model = UserStory
+    template_name = 'community_engagement/user_story_list.html'
+    context_object_name = 'stories'
+
+class UserStoryCreateView(LoginRequiredMixin, CreateView):
+    model = UserStory
+    form_class = UserStoryForm
+    template_name = 'community_engagement/user_story_create.html'
+    success_url = reverse_lazy('user_story_list')
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
+class UserStoryDetailView(DetailView):
+    model = UserStory
+    template_name = 'community_engagement/user_story_detail.html'
+    context_object_name = 'story'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = StoryCommentForm()
+        return context
+
+class UserStoryUpdateView(LoginRequiredMixin, UpdateView):
+    model = UserStory
+    form_class = UserStoryForm
+    template_name = 'community_engagement/user_story_edit.html'
+    success_url = reverse_lazy('user_story_list')
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
+class StoryCommentCreateView(LoginRequiredMixin, CreateView):
+    model = StoryComment
+    form_class = StoryCommentForm
+    template_name = 'community_engagement/comment_form.html'
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        form.instance.story = get_object_or_404(UserStory, pk=self.kwargs['pk'])
+        form.save()
+        return redirect('user_story_detail', pk=self.kwargs['pk'])
