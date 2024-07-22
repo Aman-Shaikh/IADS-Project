@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'community_engagement',
     'user_profile',
     'recycling_guides',
+    'featured_videos',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
