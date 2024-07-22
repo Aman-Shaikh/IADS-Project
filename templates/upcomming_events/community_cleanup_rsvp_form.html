@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}RSVP for Community Clean-Up{% endblock %}
+
+{% block content %}
+  <h1 class="text-center">RSVP for {{ event.title }}</h1>
+  <form method="post" class="mt-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text-center">
+      <button type="submit" class="btn btn-success">Submit</button>
+      <a class="btn btn-secondary" href="{% url 'community-cleanup-detail' event.pk %}">Cancel</a>
+    </div>
+  </form>
+{% endblock %}

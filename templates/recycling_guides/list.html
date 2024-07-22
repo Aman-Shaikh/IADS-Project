@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Recycling Guides{% endblock %}
+{% block content %}
+<h1 class="pt-5 pb-3">Recycling Guides</h1>
+<div class="row">
+    {% for guide in guides %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <img class="card-img-top" src="{{ guide.image.url }}" alt="{{ guide.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ guide.title }}</h5>
+                <p class="card-text">{{ guide.description }}</p>
+                <a href="{% url 'recycling_guide_detail' guide.pk %}" class="btn btn-primary">Read More</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

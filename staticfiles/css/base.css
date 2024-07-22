@@ -1,0 +1,48 @@
+.navbar-custom {
+    background-color: #009900;
+}
+.navbar-custom .navbar-brand:hover{
+    color: white;
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: white;
+    font-size: 1.2em; /* larger text */
+    font-weight: bold; /* make the text bold */
+}
+
+.navbar-brand {
+    font-size: 2.0em !important;
+}
+.navbar-light .navbar-nav .nav-link{
+    color: black;
+}
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: white;
+}
+.navbar-custom .nav-item .nav-link:hover {
+    color: white; /* slightly lighter on hover */
+}
+h1 {
+    color: #000; /* dark black */
+    font-size: 2.5em; /* larger text for the heading */
+}
+p {
+    color: #000; /* dark black */
+    font-size: 1.2em; /* larger text for the paragraph */
+}
+.fixed-size {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+footer{
+    background-color: #009900;
+}
+footer a{
+    color: white;
+    font-weight: bold;
+}
+footer a:hover{
+    color: white;
+}

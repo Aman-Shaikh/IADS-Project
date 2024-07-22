@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ guide.title }}{% endblock %}
+{% block content %}
+<div class="container mt-0 pt-5 pb-5">
+    <h1>{{ guide.title }}</h1>
+    <img src="{{ guide.image.url }}" class="img-fluid" alt="{{ guide.title }}">
+    <p class="mt-4">{{ guide.detailed_description }}</p>
+    <a href="{% url 'recycling_guides_list' %}" class="btn btn-secondary">Back to Guides</a>
+</div>
+{% endblock %}

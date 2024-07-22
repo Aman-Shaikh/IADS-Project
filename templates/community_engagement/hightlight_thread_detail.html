@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ thread.title }}{% endblock %}
+
+{% block content %}
+    <header>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/community_engagement.css' %}">
+    </header>
+
+    <main class="container mt-4 mb-4">
+        <div class="card mb-4 mt =4 my-4">
+            <div class="card-body">
+                <h1 class="comment-title">{{ thread.title }}</h1>
+                <h2 class="card-subtitle mb-2 my-2 text-muted">Description</h2>
+                <p class="card-text my-3">{{ thread.content }}</p>
+                <small class="text-muted">By {{ thread.created_by.username }} on {{ thread.created_at }}</small>
+            </div>
+        </div>
+
+        <section>
+            <h2>Comments</h2>
+            <ul class="list-group mb-4">
+                {% for comment in comments %}
+                    <li class="list-group-item">
+                        <p>{{ comment.content }}</p>
+                        <small class="text-muted">By {{ comment.created_by.username }} on {{ comment.created_at }}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <h3>Add a Comment</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success ">Add Comment</button>
+            </form>
+        </section>
+    </main>
+{% endblock %}

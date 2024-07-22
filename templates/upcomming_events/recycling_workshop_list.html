@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Recycling Workshops{% endblock %}
+
+{% block content %}
+  <h1 class="text-center">Recycling Workshops</h1>
+  <ul class="list-group">
+    {% for event in events %}
+      <li class="list-group-item">
+        <a href="{% url 'recycling-workshop-detail' event.pk %}">{{ event.title }}</a> - {{ event.date }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

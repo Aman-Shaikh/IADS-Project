@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Quick Tips
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Get Recycling Tips</h1>
+    <form method="get" class="mb-4">
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Get Tips</button>
+    </form>
+
+    <a href="{% url 'quicktips:add_tip' %}" class="btn btn-secondary mb-4">Add a New Tip</a>
+
+    {% if waste_choice_display %}
+        <h2 class="mt-4">Tips for {{ waste_choice_display }}</h2>
+        <ul class="list-group">
+            {% if tips %}
+                {% for tip in tips %}
+                    <li class="list-group-item">{{ tip.description }}</li>
+                {% endfor %}
+            {% else %}
+                <li class="list-group-item">No tips available for this waste type.</li>
+            {% endif %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

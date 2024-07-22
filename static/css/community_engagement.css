@@ -1,0 +1,253 @@
+/* General Styles */
+body {
+    background-color: #ace1af87;
+}
+
+
+.create-thread-btn {
+    background-color: #009900;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.create-thread-btn:hover {
+    color: #009900;
+    border: #009900 1px;
+    background-color: white;
+}
+
+.comment-btn {
+    background-color: #009900;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
+    display: block;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.comment-btn:hover {
+    background-color: #3e8e41;
+}
+
+
+/* Styles for Thread List */
+.thread-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: calc(33.333% - 20px);
+    position: relative;
+    border-color: #009900;
+    border-width: 20px;
+    display: block;
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+.thread-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.thread-title:hover {
+    text-decoration: underline;
+}
+
+.thread-snippet {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.thread-meta {
+    font-size: 0.875em;
+    color: #999;
+}
+
+.form-container {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /*max-width: 400px;*/
+    /*width: 50%;*/
+    box-sizing: border-box;
+}
+
+.form-container form {
+
+    flex-direction: column;
+}
+
+.form-container form .form-control {
+    margin-bottom: 15px;
+}
+
+.form-container form .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-container form .btn:hover {
+    background-color: #45a049;
+}
+
+/*-----------------------------------comment button page----------------------------*/
+
+
+.comment-title {
+    background-color: #009900;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
+    display: block;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+/* Styles for Card */
+.card2 {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: #ffffff;
+    border-radius: 25px;
+    border-color: #009900;
+    margin: 20px;
+    padding: 20px;
+}
+
+.card2:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 2px 16px;
+    border-color: #009900;
+}
+
+.container h1, .container h2 {
+    color: #333;
+}
+
+.container p {
+    color: #666;
+}
+
+.container small {
+    display: block;
+    color: #999;
+    margin-top: 10px;
+}
+
+/* Styles for Comments Section */
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+section h2 {
+    color: #333;
+}
+
+section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+section li {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+section li p {
+    color: #666;
+}
+
+section li small {
+    display: block;
+    color: #999;
+    margin-top: 5px;
+}
+
+section h3 {
+    margin-top: 20px;
+    color: #333;
+}
+
+section form {
+    margin-top: 10px;
+}
+
+section button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+section button:hover {
+    background-color: #45a049;
+}
+
+.custom-story-list{
+    border: black;
+    border-radius: 100px;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 20);
+    background-color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+}
