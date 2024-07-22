@@ -1,5 +1,7 @@
 from django import forms
+
 from .models import HighlightThread, Comment, UserStory, StoryComment
+
 
 class HighlightThreadForm(forms.ModelForm):
     class Meta:
@@ -19,6 +21,7 @@ class CommentForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
 
+
 class UserStoryForm(forms.ModelForm):
     class Meta:
         model = UserStory
@@ -36,3 +39,4 @@ class StoryCommentForm(forms.ModelForm):
         widgets = {
             'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Enter your comment'}),
         }
+

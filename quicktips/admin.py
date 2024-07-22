@@ -4,3 +4,4 @@ from .models import WasteType, Tip
 
 admin.site.register(WasteType)
 admin.site.register(Tip)
+

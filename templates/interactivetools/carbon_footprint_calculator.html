@@ -6,7 +6,16 @@
     <link rel="stylesheet" href="{% static 'css/interactivetools.css' %}">
 </head>
 <div class="container-fluid py-5">
-    <h2>Carbon Footprint Calculator</h2>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <video width="100%" height="100%" autoplay muted loop>
+                <source src="{% static 'images/carbon.mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="col-12 col-lg-6">
+             <h2>Carbon Footprint Calculator</h2>
+
     <p>Calculate your environmental impact and learn how to reduce it.</p>
     <form method="POST" action="{% url 'carbon_footprint_calculator' %}">
         {% csrf_token %}
@@ -28,5 +37,9 @@
         </ul>
         {% endif %}
     </div>
+
+        </div>
+    </div>
+
 </div>
 {% endblock %}

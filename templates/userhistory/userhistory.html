@@ -1,0 +1,52 @@
+<!-- interactivetools/user_history.html -->
+{% extends 'base.html' %}
+{% block title %}User History{% endblock %}
+{% block content %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/userhistory.css' %}">
+</head>
+<div class="container-fluid py-5">
+    <h2>User History</h2>
+    <p>Total number of visits: {{ visit_count }}</p>
+    <p>Last visit time: {{ last_visit_time }}</p>
+
+{#    <h3>Number of Visits Per Day:</h3>#}
+{#    <ul>#}
+{#        {% for date, count in daily_visits.items %}#}
+{#        <li>{{ date }}: {{ count }} visits</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+
+        <h3>Visit History:</h3>
+    <ul id="visit-history-list">
+        {% for visit in visit_history %}
+        <li class="visit-history-item" {% if forloop.counter > 10 %}style="display: none;"{% endif %}>{{ visit }}</li>
+        {% endfor %}
+    </ul>
+    {% if visit_history|length > 10 %}
+    <button id="show-more-btn" onclick="showMore()">Show More</button>
+    <button id="show-less-btn" onclick="showLess()" style="display: none;">Show Less</button>
+    {% endif %}
+
+    <script>
+        function showMore() {
+            var items = document.getElementsByClassName('visit-history-item');
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.display = 'list-item';
+            }
+            document.getElementById('show-more-btn').style.display = 'none';
+            document.getElementById('show-less-btn').style.display = 'block';
+        }
+
+        function showLess() {
+            var items = document.getElementsByClassName('visit-history-item');
+            for (var i = 10; i < items.length; i++) {
+                items[i].style.display = 'none';
+            }
+            document.getElementById('show-more-btn').style.display = 'block';
+            document.getElementById('show-less-btn').style.display = 'none';
+        }
+    </script>
+</div>
+{% endblock %}

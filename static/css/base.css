@@ -1,5 +1,8 @@
 .navbar-custom {
-    background-color: #009900;
+
+/*    background-color: #009900;*/
+    background-image: linear-gradient(to right, #9ACD32, #009900);
+
 }
 .navbar-custom .navbar-brand:hover{
     color: white;
@@ -37,7 +40,9 @@ p {
     object-fit: cover;
 }
 footer{
-    background-color: #009900;
+/*    background-color: #009900;*/
+    background-image: linear-gradient(to right, #9ACD32, #009900);
+
 }
 footer a{
     color: white;
