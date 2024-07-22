@@ -61,6 +61,7 @@ body {
     border-width: 20px;
     display: block;
 }
+
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
@@ -121,6 +122,7 @@ body {
 .form-container form .btn:hover {
     background-color: #45a049;
 }
+
 
 /*-----------------------------------comment button page----------------------------*/
 
@@ -238,6 +240,7 @@ section button:hover {
     box-shadow: 0 0 100px rgba(0, 0, 0, 20);
     background-color: black;
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

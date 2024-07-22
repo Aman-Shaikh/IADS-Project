@@ -28,3 +28,4 @@ def add_tip_view(request):
         form = TipForm()
 
     return render(request, 'quicktips/add_tip.html', {'form': form})
+

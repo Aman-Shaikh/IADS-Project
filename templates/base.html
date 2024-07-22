@@ -12,6 +12,7 @@
 </head>
 <body>
     <nav class="navbar navbar-light navbar-custom" style="    background-image: linear-gradient(to right, #9ACD32, #009900);">
+
         <div class="container-fluid d-flex justify-content-center">
             <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
                 {% load static %}
@@ -21,7 +22,9 @@
         </div>
     </nav>
 
+
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom" style="    background-image: linear-gradient(to right, #9ACD32, #009900);">
+
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -63,12 +66,16 @@
             </div>
         </div>
     </nav>
+
     <div class="container-fluid" style="background-image: linear-gradient(to right, white, #ace1af87)">
+
         {% block content %}
         <!-- Content for each page will be inserted here -->
         {% endblock %}
     </div>
+
     <footer class="container-fluid px-3 pt-5 pb-2" style="background-image: linear-gradient(to right, #9ACD32, #009900);">
+
         <div class="row text-center">
             <div class="col-12 col-md-6 col-lg-3">
                 <a class="navbar-brand" href="{% url 'home' %}">
@@ -126,5 +133,6 @@
         </div>
         <p class="text-center mt-3" style="color: white;">RecycleWise 2024 | Copyright</p>
     </footer>
+    
 </body>
 </html>

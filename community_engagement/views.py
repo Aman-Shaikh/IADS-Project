@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import HighlightThread, Comment, UserStory, StoryComment
 from .forms import HighlightThreadForm, CommentForm, UserStoryForm, StoryCommentForm
 from django.urls import reverse, reverse_lazy
+
 from django.contrib import messages
 
 def HighlightThreadListView(request):
@@ -53,6 +54,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         form.save()
         return redirect('highlight_thread_detail', pk=self.kwargs['pk'])
 
+
 # User Stories Views
 class UserStoryListView(ListView):
     model = UserStory
@@ -99,3 +101,4 @@ class StoryCommentCreateView(LoginRequiredMixin, CreateView):
         form.instance.story = get_object_or_404(UserStory, pk=self.kwargs['pk'])
         form.save()
         return redirect('user_story_detail', pk=self.kwargs['pk'])
+

@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     'interactivetools',
     'community_engagement',
     'user_profile',
-    'recycling_guides'
+    'recycling_guides',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -72,11 +72,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'userhistory.middleware.UserHistoryMiddleware',
+
 ]
 
 ROOT_URLCONF = 'RecycleWise.urls'
 
+
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
 
 TEMPLATES = [
     {
@@ -160,9 +163,11 @@ STATICFILES_DIRS = [
 ]
 
 
+
 # Media files (user-uploaded content)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

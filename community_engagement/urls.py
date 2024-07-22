@@ -1,7 +1,9 @@
 from django.urls import path
 from community_engagement import views
+
 from community_engagement.views import CommentCreateView, UserStoryListView, UserStoryCreateView, UserStoryDetailView, \
     UserStoryUpdateView, StoryCommentCreateView
+
 
 urlpatterns = [
     path('forum-highlights/', views.HighlightThreadListView, name='highlight_thread_list'),
@@ -15,6 +17,5 @@ urlpatterns = [
     path('user-stories/<int:pk>/', UserStoryDetailView.as_view(), name='user_story_detail'),
     path('user-stories/<int:pk>/edit/', UserStoryUpdateView.as_view(), name='user_story_edit'),
     path('user-stories/<int:pk>/comment/', StoryCommentCreateView.as_view(), name='story_comment_create'),
-
 
 ]

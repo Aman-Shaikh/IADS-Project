@@ -17,3 +17,4 @@ def get_reviews(request):
 
     reviews = Review.objects.all()
     return render(request, 'reviews/reviews.html', {'form': form, 'reviews': reviews})
+
