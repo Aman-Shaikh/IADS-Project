@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,reverse
 from .models import FeaturedVideo
 from .forms import FeaturedVideoForm
 
@@ -11,7 +11,7 @@ def add_featured_video(request):
         form = FeaturedVideoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('featured_videos_list.html')
+            return redirect(reverse('featured_videos_list'))
     else:
         form = FeaturedVideoForm()
     return render(request, 'featured_videos/add_featured_video.html', {'form': form})
