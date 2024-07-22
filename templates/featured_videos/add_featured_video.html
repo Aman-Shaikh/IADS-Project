@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Add Featured Video{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Add Featured Video</h2>
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Add Video</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
