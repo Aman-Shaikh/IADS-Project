@@ -3,24 +3,24 @@
 {% block title %}User Stories{% endblock %}
 
 {% block content %}
-
+<head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/community_engagement.css' %}">
+</head>
 
 <main>
+  <h2 style="text-align: center">welcome to user stories</h2>
     <div class="row">
-        
         {% for story in stories %}
-            
-        <div class="col-md-4 custom-story-list">
+
+        <div class="col-md-4">
             <div class="card mb-4 mt-4">
-                <div class="card-body">
-                    <div class="story_list custom-story-list">
+                <div class="card-body p-0">
+                    <div class="story_list custom-story-list p-2">
                     <h5 class="card-title">{{ story.title }}</h5>
                     <p class="card-text">{{ story.content|truncatewords:30 }}</p>
                     <a href="{% url 'user_story_detail' story.id %}" class="btn btn-success">Read More</a>
                     </div>
-                </div>
-                <div class="card-footer text-muted">
-                    Likes: {{ story.total_likes }} | Dislikes: {{ story.total_dislikes }}
                 </div>
             </div>
         </div>
