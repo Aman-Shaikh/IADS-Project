@@ -14,7 +14,4 @@ def user_complaint_view(request):
     else:
         form = ComplaintForm()
     return render(request, 'userfeedback/user_complaint.html', {'form': form})
-<<<<<<< HEAD
-=======
 
->>>>>>> vatsal
