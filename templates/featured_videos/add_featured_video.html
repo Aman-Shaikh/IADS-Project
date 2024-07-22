@@ -3,15 +3,40 @@
 {% block title %}Add Featured Video{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="text-center">Add Featured Video</h2>
-    <div class="row mt-4">
-        <div class="col-md-8 offset-md-2">
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Add Video</button>
-            </form>
+<div class="container">
+    <div class="row justify-content-center pt-5 pb-5">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header text-center bg-success text-white">
+                    <h2>Add Featured Video</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <ul>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                                {% for error in form.non_field_errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success btn-block">Add Video</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <small class="text-muted">
+                        <a href="{% url 'featured_videos_list' %}">Back to Featured Videos</a>
+                    </small>
+                </div>
+            </div>
         </div>
     </div>
 </div>
