@@ -56,49 +56,95 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
 
 # User Stories Views
-class UserStoryListView(ListView):
-    model = UserStory
-    template_name = 'community_engagement/user_story_list.html'
-    context_object_name = 'stories'
+def UserStoryListView(request):
+    stories = UserStory.objects.all()
+    return render(request, 'community_engagement/user_story_list.html', {'stories': stories})
 
-class UserStoryCreateView(LoginRequiredMixin, CreateView):
-    model = UserStory
-    form_class = UserStoryForm
-    template_name = 'community_engagement/user_story_create.html'
-    success_url = reverse_lazy('user_story_list')
+# Create User Story
+@login_required
+def UserStoryCreateView(request):
+    if request.method == 'POST':
+        form = UserStoryForm(request.POST)
+        if form.is_valid():
+            user_story = form.save(commit=False)
+            user_story.created_by = request.user
+            user_story.save()
+            messages.success(request, 'Story added successfully!')
+            return redirect('user_story_list')
+        else:
+            messages.error(request, 'Error adding story. Please correct the form errors.')
+    else:
+        form = UserStoryForm()
+    return render(request, 'community_engagement/user_story_create.html', {'form': form})
 
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
+# Detail View of User Story
+def UserStoryDetailView(request, pk):
+    story = get_object_or_404(UserStory, pk=pk)
+    comments = story.comments.all()
 
-class UserStoryDetailView(DetailView):
-    model = UserStory
-    template_name = 'community_engagement/user_story_detail.html'
-    context_object_name = 'story'
+    if request.method == 'POST':
+        form = StoryCommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.story = story
+            comment.created_by = request.user
+            comment.save()
+            return redirect('user_story_detail', pk=story.pk)
+        else:
+            messages.error(request, 'Error adding comment. Please correct the form errors.')
+    else:
+        form = StoryCommentForm()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = StoryCommentForm()
-        return context
+    return render(request, 'community_engagement/user_story_detail.html', {'story': story, 'comments': comments, 'form': form})
 
-class UserStoryUpdateView(LoginRequiredMixin, UpdateView):
-    model = UserStory
-    form_class = UserStoryForm
-    template_name = 'community_engagement/user_story_edit.html'
-    success_url = reverse_lazy('user_story_list')
+# Edit User Story
+@login_required
+def UserStoryUpdateView(request, pk):
+    story = get_object_or_404(UserStory, pk=pk)
 
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
+    if request.method == 'POST':
+        form = UserStoryForm(request.POST, instance=story)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Story updated successfully!')
+            return redirect('user_story_list')
+        else:
+            messages.error(request, 'Error updating story. Please correct the form errors.')
+    else:
+        form = UserStoryForm(instance=story)
 
-class StoryCommentCreateView(LoginRequiredMixin, CreateView):
-    model = StoryComment
-    form_class = StoryCommentForm
-    template_name = 'community_engagement/comment_form.html'
+    return render(request, 'community_engagement/user_story_edit.html', {'form': form, 'story': story})
 
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        form.instance.story = get_object_or_404(UserStory, pk=self.kwargs['pk'])
-        form.save()
-        return redirect('user_story_detail', pk=self.kwargs['pk'])
+# Create Comment on User Story
+@login_required
+def StoryCommentCreateView(request, pk):
+    story = get_object_or_404(UserStory, pk=pk)
 
+    if request.method == 'POST':
+        form = StoryCommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.story = story
+            comment.created_by = request.user
+            comment.save()
+            return redirect('user_story_detail', pk=story.pk)
+        else:
+            messages.error(request, 'Error adding comment. Please correct the form errors.')
+    else:
+        form = StoryCommentForm()
+
+    return render(request, 'community_engagement/comment_form.html', {'form': form, 'story': story})
+
+# Like User Story
+@login_required
+def like_story(request, pk):
+    story = get_object_or_404(UserStory, pk=pk)
+    story.likes.add(request.user)
+    return redirect('user_story_detail', pk=story.pk)
+
+# Dislike User Story
+@login_required
+def dislike_story(request, pk):
+    story = get_object_or_404(UserStory, pk=pk)
+    story.dislikes.add(request.user)
+    return redirect('user_story_detail', pk=story.pk)
