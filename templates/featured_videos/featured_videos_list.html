@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Featured Videos{% endblock %}
+
+{% block content %}
+<div class="container pt-5">
+    <h2 class="text-center">Featured Videos</h2>
+    <div class="row mt-4">
+        {% for video in videos %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ video.thumbnail.url }}" class="card-img-top" alt="{{ video.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ video.title }}</h5>
+                    <p class="card-text">{{ video.description }}</p>
+                    <a href="{{ video.video_url }}" target="_blank" class="btn btn-primary">Watch Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

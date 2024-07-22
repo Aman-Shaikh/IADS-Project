@@ -21,7 +21,9 @@ urlpatterns = [
     path('community_engagement/', include('community_engagement.urls')),
     path('recycling_guides/', include('recycling_guides.urls')),
     path('userhistory/', include('userhistory.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('featured_videos/', include('featured_videos.urls')),
+
+    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
