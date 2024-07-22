@@ -9,11 +9,11 @@
         <link rel="stylesheet" href="{% static 'css/community_engagement.css' %}">
     </header>
 
-    <main class="container mt-4 mb-4">
-        <div class="card mb-4 mt =4 my-4">
+    <main class="container py-5">
+        <div class="card my-4 pb-4">
             <div class="card-body">
-                <h1 class="comment-title">{{ thread.title }}</h1>
-                <h2 class="card-subtitle mb-2 my-2 text-muted">Description</h2>
+                <h1 class="comment-title py-1">{{ thread.title }}</h1>
+                <h2 class="card-subtitle my-2 text-muted">Description</h2>
                 <p class="card-text my-3">{{ thread.content }}</p>
                 <small class="text-muted">By {{ thread.created_by.username }} on {{ thread.created_at }}</small>
             </div>
