@@ -1,3 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import FeaturedVideo
+from .forms import FeaturedVideoForm
 
-# Create your views here.
+def featured_videos_list(request):
+    videos = FeaturedVideo.objects.all()
+    return render(request, 'featured_videos/featured_videos_list.html', {'videos': videos})
+
+def add_featured_video(request):
+    if request.method == 'POST':
+        form = FeaturedVideoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('featured_videos_list')
+    else:
+        form = FeaturedVideoForm()
+    return render(request, 'featured_videos/add_featured_video.html', {'form': form})
