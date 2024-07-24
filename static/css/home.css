@@ -19,6 +19,9 @@
  .carousel-item .img2 {
      height: 155%;
  }
+ .dflexadjust{
+    width: 50%;
+}
 }
 
 .carousel, .carousel-inner h4, .carousel, .carousel-inner h1{
@@ -32,4 +35,15 @@
     background-color: #009900;
     color: white;
     border-color: #009900;
+}
+.fixed-size {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.dflexadjust1{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 7px 5px;
+    padding: 20px 10px;
 }

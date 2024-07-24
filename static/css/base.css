@@ -34,11 +34,6 @@ p {
     color: #000; /* dark black */
     font-size: 1.2em; /* larger text for the paragraph */
 }
-.fixed-size {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-}
 footer{
 /*    background-color: #009900;*/
     background-image: linear-gradient(to right, #9ACD32, #009900);
@@ -50,4 +45,8 @@ footer a{
 }
 footer a:hover{
     color: white;
+}
+
+.wow{
+    visibility: hidden;
 }
