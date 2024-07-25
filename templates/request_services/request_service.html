@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Request Service{% endblock %}
+
+{% block content %}
+<div class="container mt-0 pt-3 pb-5">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header text-center bg-success text-white">
+                    <h2>Request Service</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" id="service-request-form" name="service-request-form" accept-charset="utf-8" action="#">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_name">Full Name</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_email">Email Address</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_phone">Phone Number (Optional)</label>
+                            {{ form.phone }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_address">Address</label>
+                            {{ form.address }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_service_type">Service Type</label>
+                            {{ form.service_type }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_request_details">Request Details</label>
+                            {{ form.request_details }}
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
