@@ -16,6 +16,7 @@ import ssl
 import certifi
 from pathlib import Path
 
+import userfeedback
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -61,6 +62,7 @@ INSTALLED_APPS = [
     'user_profile',
     'recycling_guides',
     'featured_videos',
+    'userfeedback',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
