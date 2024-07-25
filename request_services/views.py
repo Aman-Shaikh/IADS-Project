@@ -9,7 +9,8 @@ def request_service_view(request):
             form.save()
             messages.success(request, 'Your service request has been submitted!')
             return redirect('home')
+        else:
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = ServiceRequestForm()
     return render(request, 'request_services/request_service.html', {'form': form})
-
