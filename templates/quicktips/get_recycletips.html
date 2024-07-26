@@ -9,10 +9,9 @@
     <h1>Get Recycling Tips</h1>
     <form method="get" class="mb-4">
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Get Tips</button>
+        <input type="submit" class="btn btn-light-green btn-block w-50" value="Get Tips">
     </form>
-
-    <a href="{% url 'quicktips:add_tip' %}" class="btn btn-secondary mb-4">Add a New Tip</a>
+    <a href="{% url 'quicktips:add_tip' %}" class="btn btn-light-green2 btn-block w-50 mb-4">Add a New Tip</a>
 
     {% if waste_choice_display %}
         <h2 class="mt-4">Tips for {{ waste_choice_display }}</h2>
@@ -27,4 +26,24 @@
         </ul>
     {% endif %}
 </div>
+    
+        <style>
+    .btn-light-green {
+        background-color: #2dbb2d;
+        color: white;
+    }
+    .btn-light-green:hover {
+        background-color: #0da60d;
+        color: white;
+    }
+    
+    .btn-light-green2 {
+        background-color: #186718;
+        color: white;
+    }
+    .btn-light-green2:hover {
+        background-color: #053805;
+        color: white;
+    }
+</style>
 {% endblock %}

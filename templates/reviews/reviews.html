@@ -6,23 +6,46 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h1>Submit a Review</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Submit Review</button>
-    </form>
-
-    <h1 class="mt-4">All Reviews</h1>
-    <ul class="list-group">
-        {% for review in reviews %}
-            <li class="list-group-item">
-                <strong>{{ review.user.username }}</strong> reviewed <strong>{{ review.get_service_display }}</strong><br>
-                Rating: {{ review.rating }}<br>
-                Feedback: {{ review.feedback }}<br>
-                Posted on: {{ review.review_date|date:"F j, Y, g:i a" }}
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Submit a Review</h1>
+            <form method="post" class="mb-4">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-light-green btn-block">Submit Review</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h1 class="mt-4 mt-md-0">All Reviews</h1>
+            <ul class="list-group">
+                {% for review in reviews %}
+                    <li class="list-group-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <strong>{{ review.user.username }}</strong> reviewed <strong>{{ review.get_service_display }}</strong>
+                            </div>
+                            <div class="badge badge-info">Rating: {{ review.rating }}</div>
+                        </div>
+                        <div class="mt-2">
+                            <p>{{ review.feedback }}</p>
+                            <small class="text-muted">Posted on: {{ review.review_date|date:"F j, Y, g:i a" }}</small>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </div>
+    <style>
+    .btn-light-green {
+        background-color: #2dbb2d;
+        color: white;
+    }
+    .btn-light-green:hover {
+        background-color: #0da60d;
+        color: white;
+    }
+</style>
 {% endblock %}
+
+

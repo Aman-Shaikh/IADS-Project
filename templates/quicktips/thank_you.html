@@ -8,6 +8,17 @@
 <div class="container mt-4">
     <h1>Thank you for adding to our success</h1>
     <p>Your tip has been successfully added.</p>
-    <a href="{% url 'quicktips:quicktips_view' %}" class="btn btn-primary">Back to Tips</a>
+    <a href="{% url 'quicktips:quicktips_view' %}" class="btn btn-light-green mb-4">Back to Tips</a>
 </div>
+    
+    <style>
+    .btn-light-green {
+        background-color: #2dbb2d;
+        color: white;
+    }
+    .btn-light-green:hover {
+        background-color: #0da60d;
+        color: white;
+    }
+    </style>
 {% endblock %}
