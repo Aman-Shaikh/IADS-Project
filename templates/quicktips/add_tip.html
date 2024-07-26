@@ -10,7 +10,18 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-light-green mb-4">Submit</button>
     </form>
 </div>
+    <style>
+    .btn-light-green {
+        background-color: #2dbb2d;
+        color: white;
+    }
+    .btn-light-green:hover {
+        background-color: #0da60d;
+        color: white;
+    }
+    </style>
+    
 {% endblock %}
