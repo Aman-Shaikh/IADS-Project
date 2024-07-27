@@ -25,6 +25,8 @@
 }
 .navbar-custom .nav-item .nav-link:hover {
     color: white; /* slightly lighter on hover */
+    /*background-color: #ffffff60;*/
+    /*border-radius: 7px;*/
 }
 h1 {
     color: #000; /* dark black */

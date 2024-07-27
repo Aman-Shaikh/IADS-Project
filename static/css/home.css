@@ -40,7 +40,13 @@
     width: 150px;
     height: 150px;
     object-fit: cover;
+    transition: 0.5s;
     border-radius: 50%;
+}
+.fixed-size:hover{
+
+    box-shadow: #009900 0px 5px 15px;
+    transform: scale(1.1, 1.1);
 }
 
 .dflexadjust1{
