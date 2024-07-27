@@ -3,37 +3,63 @@
 {% block title %}Recycling Workshop Details{% endblock %}
 
 {% block content %}
-  <h1 class="text-center">{{ event.title }}</h1>
-  <p><strong>Description:</strong> {{ event.description }}</p>
-  <p><strong>Date:</strong> {{ event.date }}</p>
-  <p><strong>Time:</strong> {{ event.time }}</p>
-  <p><strong>Location:</strong> {{ event.location }}</p>
-  <p><strong>Organizer:</strong> {{ event.organizer }}</p>
-  <p><strong>Contact Email:</strong> {{ event.contact_email }}</p>
+<header>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/upcomming_events.css' %}">
+</header>
+<div class="container my-4">
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            <h1 class="card-title text-center">{{ event.title }}</h1>
+        </div>
+        <div class="card-body">
+            <p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
+            <p class="card-text"><strong>Date:</strong> {{ event.date }}</p>
+            <p class="card-text"><strong>Time:</strong> {{ event.time }}</p>
+            <p class="card-text"><strong>Location:</strong> {{ event.location }}</p>
+            <p class="card-text"><strong>Organizer:</strong> {{ event.organizer }}</p>
+            <p class="card-text"><strong>Contact Email:</strong> <a href="mailto:{{ event.contact_email }}">{{ event.contact_email }}</a></p>
+        </div>
+        <div class="card-footer text-center">
+            <a class="btn btn-success" href="{% url 'recycling-workshop-rsvp' event.pk %}">Register for this Workshop</a>
+        </div>
+    </div>
 
-  <a class="btn btn-success" href="{% url 'recycling-workshop-rsvp' event.pk %}">Register for this Workshop</a>
-  <ul class="list-group mt-3">
-    {% for rsvp in event.recycling_workshop_rsvps.all %}
-      <li class="list-group-item">{{ rsvp.name }} - {{ rsvp.email_id }} - {{ rsvp.gender }}</li>
-    {% endfor %}
-  </ul>
+    <div class="card mt-4">
+        <div class="card-header bg-success text-white">
+            <h2 class="card-title">Materials</h2>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                {% for material in event.materials.all %}
+                    <li class="list-group-item">
+                        <a href="{{ material.file.url }}">{{ material.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 
-  <h2 class="mt-4">Materials</h2>
-  <ul class="list-group">
-    {% for material in event.materials.all %}
-      <li class="list-group-item">
-        <a href="{{ material.file.url }}">{{ material.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+{#    <div class="card mt-4">#}
+{#        <div class="card-header bg-success text-white">#}
+{#            <h2 class="card-title">RSVPs</h2>#}
+{#        </div>#}
+{#        <div class="card-body">#}
+{#            <ul class="list-group">#}
+{#                {% for rsvp in event.recycling_workshop_rsvps.all %}#}
+{#                    <li class="list-group-item">{{ rsvp.name }} - {{ rsvp.email_id }} - {{ rsvp.gender }}</li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+{#    </div>#}
 
-  <h2 class="mt-4">Feedback</h2>
-  <a class="btn btn-primary" href="{% url 'workshop-feedback' event.pk %}">Give Feedback</a>
-{#  <ul class="list-group mt-3">#}
-{#    {% for feedback in event.feedbacks.all %}#}
-{#      <li class="list-group-item">#}
-{#        <strong>{{ feedback.user.username }}</strong>: {{ feedback.rating }} - {{ feedback.comments }}#}
-{#      </li>#}
-{#    {% endfor %}#}
-{#  </ul>#}
+{#    <div class="card mt-4">#}
+{#        <div class="card-header bg-success text-white">#}
+{#            <h2 class="card-title">Feedback</h2>#}
+{#        </div>#}
+{#        <div class="card-body text-center">#}
+{#            <a class="btn btn-primary" href="{% url 'workshop-feedback' event.pk %}">Give Feedback</a>#}
+{#        </div>#}
+{#    </div>#}
+</div>
 {% endblock %}

@@ -3,12 +3,28 @@
 {% block title %}Recycling Workshops{% endblock %}
 
 {% block content %}
-  <h1 class="text-center">Recycling Workshops</h1>
-  <ul class="list-group">
-    {% for event in events %}
-      <li class="list-group-item">
-        <a href="{% url 'recycling-workshop-detail' event.pk %}">{{ event.title }}</a> - {{ event.date }}
-      </li>
-    {% endfor %}
-  </ul>
+<header>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/upcomming_events.css' %}">
+</header>
+<div class="container my-4">
+    <h1 class="text-center mb-4">Recycling Workshops</h1>
+    <div class="row">
+        {% for event in events %}
+            <div class="col-md-6 mb-4 d-flex align-items-stretch">
+                <div class="list-card flex-fill">
+                    <div class="list-card-body">
+                        <h5 class="list-card-title">{{ event.title }}</h5>
+                        <p class="list-card-text">
+                            <strong>Date:</strong> {{ event.date }}<br>
+                            <strong>Location:</strong> {{ event.location }}<br>
+                            <strong>Organizer:</strong> {{ event.organizer }}
+                        </p>
+                        <a href="{% url 'recycling-workshop-detail' event.pk %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

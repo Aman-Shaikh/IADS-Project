@@ -1,3 +1,146 @@
-body{
-    background-color: #ace1af87;
+/* Custom styles for upcoming events */
+
+/* Reset default browser styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+main {
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #4CAF50; /* Green */
+}
+
+/* Forms */
+form {
+    background-color: #ffffff; /* White */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type=text],
+form input[type=email],
+form input[type=date],
+form input[type=time],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+form button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form button:hover {
+    background-color: #45a049; /* Darker green */
+}
+
+
+.list-card {
+     background-color: white;
+    border: 2px solid green;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.list-card-body {
+    /*background-color: #ffffff; !* White background for card body *!*/
+    /*border-color: black;*/
+
+}
+
+.list-card-title {
+    color: #343a40; /* Dark color for card titles */
+    font-weight: bold;
+}
+
+.list-card-text {
+    color: #6c757d; /* Muted color for card text */
+}
+
+.btn-primary {
+    background-color: #28a745; /* Green button */
+    border-color: #28a745; /* Green border */
+}
+
+.btn-primary:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #1e7e34; /* Darker green border on hover */
+}
+
+/*---------- Details ------*/
+
+/* Modern UI styles for the Community Clean-Up Details page */
+
+.card {
+    margin-top: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+.card-header {
+    border-radius: 15px;
+}
+
+.card-body {
+    background-color: #ffffff;
+}
+
+.card-text {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.card-footer {
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+    background-color: #f8f9fa;
+}
+
+.card-title {
+    color: white;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
 }
