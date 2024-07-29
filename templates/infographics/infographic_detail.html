@@ -1,0 +1,11 @@
+<!-- infographics/templates/infographics/infographic_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ infographic.title }}</h2>
+  <img src="{{ infographic.image.url }}" alt="{{ infographic.title }}">
+  <p>{{ infographic.description }}</p>
+  <a href="{% url 'infographic_edit' pk=infographic.pk %}">Edit</a>
+  <a href="{% url 'infographic_list' %}">Back to list</a>
+{% endblock %}

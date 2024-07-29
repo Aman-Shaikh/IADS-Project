@@ -63,7 +63,8 @@ INSTALLED_APPS = [
     'recycling_guides',
     'featured_videos',
     'userfeedback',
-    'request_services'
+    'request_services',
+    'infographics',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
