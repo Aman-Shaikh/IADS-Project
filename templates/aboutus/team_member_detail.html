@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% load static %}
 <h1>{{ member.user.username }}</h1>
+{% if member.image %}
+<img src="{{ member.image.url }}" alt="{{ member.user.username }}'s profile picture" class="profile-picture" width="200" height="200"/>
+{% else %}
+<img src="{% static 'default-profile.png' %}" alt="Default profile picture" class="profile-picture"/>  <!-- Default image -->
+{% endif %}
 <p>{{ member.bio }}</p>
 <h2>Contributions</h2>
-<ul>
+<ul class="contributions-list">
     {% for section in member.sections.all %}
     <li><a href="{% url 'section_detail' section.pk %}">{{ section.name }}</a></li>
     {% endfor %}
 </ul>
+<a href="{% url 'edit_team_member' member.pk %}" class="edit-link">Edit Team Member</a>
 {% endblock %}

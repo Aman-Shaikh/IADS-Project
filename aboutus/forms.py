@@ -9,7 +9,7 @@ class SectionForm(forms.ModelForm):
 class TeamMemberForm(forms.ModelForm):
     class Meta:
         model = TeamMember
-        fields = ['bio', 'sections']
+        fields = ['bio', 'sections', 'image']  # Include the image field
         widgets = {
             'sections': forms.CheckboxSelectMultiple(),
         }

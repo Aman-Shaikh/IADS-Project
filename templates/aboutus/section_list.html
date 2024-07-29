@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Sections</h1>
-<ul>
+<ul class="section-list">
     {% for section in sections %}
     <li><a href="{% url 'section_detail' section.pk %}">{{ section.name }}</a></li>
     {% endfor %}
