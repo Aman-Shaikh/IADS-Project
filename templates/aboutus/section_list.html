@@ -1,10 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Sections</h1>
-<ul class="section-list">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/section_list.css' %}">
+
+<h1 class="page-title">Sections</h1>
+
+<div class="section-list">
     {% for section in sections %}
-    <li><a href="{% url 'section_detail' section.pk %}">{{ section.name }}</a></li>
+    <div class="section-card">
+        <a href="{% url 'section_detail' section.pk %}" class="section-link">
+            <h2>{{ section.name }}</h2>
+            <p>{{ section.description|truncatewords:20 }}</p> <!-- Limit to 20 words -->
+        </a>
+    </div>
     {% endfor %}
-</ul>
+</div>
+
+<a href="{% url 'add_section' %}" class="add-section-link">Add New Section</a>
+
 {% endblock %}

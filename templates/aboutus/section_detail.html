@@ -1,22 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ section.name }}</h1>
-<p>{{ section.description }}</p>
-<h2>Team Members</h2>
-<ul class="team-members-list">
 {% load static %}
-    {% for member in section.team_members.all %}
-    <li>
-        <a href="{% url 'team_member_detail' member.pk %}">
-            {% if member.image %}
-            <img src="{{ member.image.url }}" alt="{{ member.user.username }}'s profile picture" class="profile-picture"/>
-            {% else %}
-            <img src="{% static 'default-profile.png' %}" alt="Default profile picture" class="profile-picture"/>  <!-- Default image -->
-            {% endif %}
-            {{ member.user.username }}
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+<link rel="stylesheet" href="{% static 'css/section_detail.css' %}">
+
+<div class="section-detail">
+    <h1 class="section-title">{{ section.name }}</h1>
+    <p class="section-description">{{ section.description }}</p>
+
+    <h2 class="team-members-title">Team Members</h2>
+    <ul class="team-members-list">
+        {% for member in section.team_members.all %}
+        <li class="team-member-item">
+            <a href="{% url 'team_member_detail' member.pk %}" class="team-member-link">
+                {% if member.image %}
+                <img src="{{ member.image.url }}" alt="{{ member.user.username }}'s profile picture" class="profile-picture"/>
+                {% else %}
+                <img src="{% static 'default-profile.png' %}" alt="Default profile picture" class="profile-picture"/>
+                {% endif %}
+                <span class="team-member-name">{{ member.user.username }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
 {% endblock %}

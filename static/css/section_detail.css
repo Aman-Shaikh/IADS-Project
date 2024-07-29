@@ -1,0 +1,106 @@
+/* General Styles for the Section Detail Page */
+.section-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.section-description {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.team-members-title {
+    font-size: 2rem;
+    color: #34495e;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.team-members-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.team-member-item {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 150px; /* Adjust size based on content */
+    max-width: 200px; /* Ensure a maximum size */
+}
+
+.team-member-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.team-member-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #3498db;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #e7e7e7;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.profile-picture:hover {
+    transform: scale(1.1);
+}
+
+.team-member-name {
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+    .profile-picture {
+        width: 80px;
+        height: 80px;
+    }
+
+    .team-member-name {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-picture {
+        width: 60px;
+        height: 60px;
+    }
+
+    .team-member-name {
+        font-size: 0.8rem;
+    }
+}
