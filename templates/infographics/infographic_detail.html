@@ -2,10 +2,88 @@
 
 {% extends 'base.html' %}
 
+{% block title %}{{ infographic.title }}{% endblock %}
+
 {% block content %}
-  <h2>{{ infographic.title }}</h2>
-  <img src="{{ infographic.image.url }}" alt="{{ infographic.title }}">
-  <p>{{ infographic.description }}</p>
-  <a href="{% url 'infographic_edit' pk=infographic.pk %}">Edit</a>
-  <a href="{% url 'infographic_list' %}">Back to list</a>
+<style>
+    .infographic-container {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 0;
+        border: none;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    .infographic-header {
+        position: relative;
+        background: url('{{ infographic.image.url }}') no-repeat center center;
+        background-size: cover;
+        height: 300px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .infographic-header h2 {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 5px;
+        font-size: 2.5em;
+        margin: 0;
+    }
+    .infographic-content {
+        padding: 20px;
+        text-align: center;
+    }
+    .infographic-description {
+        font-size: 1.2em;
+        color: #555;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+    .infographic-footer {
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid #ddd;
+        background-color: #f9f9f9;
+    }
+    .infographic-footer a {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #fff;
+        transition: background-color 0.3s;
+    }
+    .btn-edit {
+        background-color: #007bff;
+    }
+    .btn-back {
+        background-color: #6c757d;
+    }
+    .btn-edit:hover {
+        background-color: #0056b3;
+    }
+    .btn-back:hover {
+        background-color: #5a6268;
+    }
+</style>
+
+<div class="infographic-container">
+    <div class="infographic-header">
+        <h2>{{ infographic.title }}</h2>
+    </div>
+    <div class="infographic-content">
+        <div class="infographic-description">
+            <p>{{ infographic.description }}</p>
+        </div>
+    </div>
+    <div class="infographic-footer">
+        <a href="{% url 'infographic_edit' pk=infographic.pk %}" class="btn-edit">Edit</a>
+        <a href="{% url 'infographic_list' %}" class="btn-back">Back to list</a>
+    </div>
+</div>
 {% endblock %}
