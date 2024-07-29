@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ member.user.username }}</h1>
+<p>{{ member.bio }}</p>
+<h2>Contributions</h2>
+<ul>
+    {% for section in member.sections.all %}
+    <li><a href="{% url 'section_detail' section.pk %}">{{ section.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

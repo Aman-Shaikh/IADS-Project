@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Team Members</h1>
+<ul>
+    {% for member in members %}
+    <li><a href="{% url 'team_member_detail' member.pk %}">{{ member.user.username }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
