@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'userfeedback',
     'request_services',
     'infographics',
+    'aboutus'
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

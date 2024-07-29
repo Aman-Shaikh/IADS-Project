@@ -24,6 +24,7 @@ urlpatterns = [
     path('recycling_guides/', include('recycling_guides.urls')),
     path('userhistory/', include('userhistory.urls')),
     path('featured_videos/', include('featured_videos.urls')),
+    path('aboutus/', include('aboutus.urls')),
 
 
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
