@@ -1,0 +1,155 @@
+/* Base styling for the page */
+.page-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.team-member-detail {
+    max-width: 900px;
+    margin: 0 auto; /* Center the detail page */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile-picture-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid #e7e7e7;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.profile-picture:hover {
+    transform: scale(1.05);
+}
+
+.member-bio {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    text-align: justify; /* Justified text for a professional look */
+}
+
+h2 {
+    font-size: 2rem;
+    color: #34495e;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.contributions-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.contributions-list li {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contributions-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.contributions-list a {
+    display: block;
+    padding: 10px 15px;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+.contributions-list a:hover {
+    color: #2980b9;
+}
+
+.edit-link {
+    display: inline-block;
+    margin: 30px auto;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-link:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .member-bio {
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+    }
+
+    .member-bio {
+        font-size: 0.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.team-member-detail {
+    animation: fadeIn 0.5s ease-out;
+}
