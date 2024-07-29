@@ -1,0 +1,15 @@
+<!-- infographics/templates/infographics/infographic_list.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Infographics</h2>
+  <ul>
+    {% for infographic in infographics %}
+      <li>
+        <a href="{% url 'infographic_detail' pk=infographic.pk %}">{{ infographic.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'infographic_new' %}">Add new infographic</a>
+{% endblock %}
