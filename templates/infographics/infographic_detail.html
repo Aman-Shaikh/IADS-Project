@@ -8,7 +8,7 @@
 <style>
     .infographic-container {
         max-width: 900px;
-        margin: 50px auto;
+        margin: 0px auto;
         padding: 0;
         border: none;
         border-radius: 10px;
@@ -72,7 +72,8 @@
     }
 </style>
 
-<div class="infographic-container">
+    <div class="container-fluid py-5">
+<div class="infographic-container wow animate__animated animate__jackInTheBox" data-wow-duration="1.5s">
     <div class="infographic-header">
         <h2>{{ infographic.title }}</h2>
     </div>
@@ -86,4 +87,5 @@
         <a href="{% url 'infographic_list' %}" class="btn-back">Back to list</a>
     </div>
 </div>
+    </div>
 {% endblock %}

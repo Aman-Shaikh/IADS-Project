@@ -3,15 +3,15 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/add_section.css' %}">
+<div class="container-fluid py-5">
+<h1 class="page-title wow animate__animated animate__slideInUp" data-wow-duration="1s">Add New Section</h1>
 
-<h1 class="page-title">Add New Section</h1>
-
-<form method="post">
+<form method="post" class="wow animate__animated animate__zoomIn" data-wow-duration="1s">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Save Section</button>
 </form>
 
-<a href="{% url 'section_list' %}" class="back-link">Back to Section List</a>
-
+<a href="{% url 'section_list' %}" class="back-link wow animate__animated animate__zoomIn" data-wow-duration="1s">Back to Section List</a>
+</div>
 {% endblock %}

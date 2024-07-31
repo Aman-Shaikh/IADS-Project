@@ -3,7 +3,7 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/add_team_member.css' %}">
-
+<div class="container-fluid py-5 wow animate__animated animate__slideInLeft" data-wow-duration="2s">
 <h1 class="page-title">Add New Team Member</h1>
 
 <form method="post" enctype="multipart/form-data">
@@ -13,5 +13,5 @@
 </form>
 
 <a href="{% url 'team_member_list' %}" class="back-link">Back to Team Member List</a>
-
+</div>
 {% endblock %}

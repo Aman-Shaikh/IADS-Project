@@ -4,19 +4,19 @@
     {% load static %}
     <!-- Link the new CSS file -->
     <link rel="stylesheet" href="{% static 'css/team_member_detail.css' %}">
-
+    <div class="container-fluid py-5">
     <div class="team-member-detail">
-        <h1 class="page-title">{{ member.user.username }}</h1>
+        <h1 class="page-title wow animate__animated animate__slideInUp" data-wow-duration="1s">{{ member.user.username }}</h1>
         
         <div class="profile-picture-container">
             {% if member.image %}
-            <img src="{{ member.image.url }}" alt="{{ member.user.username }}'s profile picture" class="profile-picture" width="200" height="200"/>
+            <img src="{{ member.image.url }}" alt="{{ member.user.username }}'s profile picture" class="profile-picture wow animate__animated animate__zoomIn" data-wow-duration="1s" width="200" height="200"/>
             {% else %}
             <img src="{% static 'default-profile.png' %}" alt="Default profile picture" class="profile-picture" width="200" height="200"/>
             {% endif %}
         </div>
 
-        <p class="member-bio">{{ member.bio }}</p>
+        <p class="member-bio wow animate__animated animate__slideInUp" data-wow-duration="1s">{{ member.bio }}</p>
 
         <h2>Contributions</h2>
         <ul class="contributions-list">
@@ -25,6 +25,7 @@
             {% endfor %}
         </ul>
 
-        <a href="{% url 'edit_team_member' member.pk %}" class="edit-link">Edit Team Member</a>
+        <a href="{% url 'edit_team_member' member.pk %}" class="edit-link wow animate__animated animate__zoomIn" data-wow-duration="2s">Edit Team Member</a>
+    </div>
     </div>
 {% endblock %}

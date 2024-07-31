@@ -7,12 +7,12 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/upcomming_events.css' %}">
     </header>
-    <div class="container my-4">
-        <h1 class="text-center mb-4">Community Clean-Up Events</h1>
+    <div class="container py-5">
+        <h1 class="text-center mb-4 wow animate__animated animate__slideInUp" data-wow-duration="1s">Community Clean-Up Events</h1>
         <div class="row">
             {% for event in events %}
                 <div class="col-md-6 mb-4">
-                    <div class="list-card">
+                    <div class="list-card wow animate__animated animate__jackInTheBox" data-wow-duration="1.5s">
                         <div class="list-card-body">
                             <h5 class="list-card-title">{{ event.title }}</h5>
                             <p class="list-card-text">

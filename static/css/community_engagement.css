@@ -99,6 +99,7 @@
 
 .thread-title:hover {
     text-decoration: underline;
+    color: black;
 }
 
 .thread-snippet {

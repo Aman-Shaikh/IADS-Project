@@ -2,27 +2,30 @@
 
 {% block content %}
 {% load static %}
-<h1 class="page-title">Team Members</h1>
+
 <link rel="stylesheet" href="{% static 'css/team_member_list.css' %}"> <!-- Linking the CSS file -->
-<ul class="team-member-list">
+    <div class="container-fluid py-5">
+<h1 class="page-title">Team Members</h1>
+    <ul class="team-member-list">
     {% for member in members %}
     <li class="team-member">
         <div class="team-member-card">
             <a href="{% url 'team_member_detail' member.pk %}">
                 <div class="image-container">
                     {% if member.image %}
-                    <img src="{{ member.image.url }}" alt="{{ member.user.username }}'s profile picture" class="profile-picture" />
+                    <img src="{{ member.image.url }}" alt="{{ member.user.username }}'s profile picture" class="profile-picture wow animate__animated animate__zoomIn" data-wow-duration="1s" />
                     {% else %}
                     <img src="{% static 'default-profile.png' %}" alt="Default profile picture" class="profile-picture" />
                     {% endif %}
                 </div>
                 <div class="team-member-info">
-                    <h2 class="team-member-name">{{ member.user.username }}</h2>
-                    <p class="team-member-bio">{{ member.bio|truncatewords:20 }}</p> <!-- Truncate bio to 20 words for uniformity -->
+                    <h2 class="team-member-name wow animate__animated animate__slideInUp" data-wow-duration="1s">{{ member.user.username }}</h2>
+                    <p class="team-member-bio wow animate__animated animate__slideInUp" data-wow-duration="1s">{{ member.bio|truncatewords:20 }}</p>
                 </div>
             </a>
         </div>
     </li>
     {% endfor %}
 </ul>
+    </div>
 {% endblock %}
