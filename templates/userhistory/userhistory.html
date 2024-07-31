@@ -6,7 +6,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/userhistory.css' %}">
 </head>
-<div class="container-fluid py-5">
+<div class="container-fluid py-5 wow animate__animated animate__slideInUp" data-wow-duration="1s">
     <h2>User History</h2>
     <p>Total number of visits: {{ visit_count }}</p>
     <p>Last visit time: {{ last_visit_time }}</p>

@@ -14,16 +14,16 @@
             <div class="card">
                 <div class="card-body text-center">
                     {% load static %}
-                    <img src="{% static 'images/profile-pic-placeholder.png' %}" class="img-fluid rounded-circle mb-3" alt="Profile Picture">
-                    <h3>{{ user.username }}</h3>
-                    <p>{{ user.email }}</p>
+                    <img src="{% static 'images/profile-pic-placeholder.png' %}" class="img-fluid rounded-circle mb-3 wow animate__animated animate__zoomIn" data-wow-duration="2s" alt="Profile Picture">
+                    <h3 class="wow animate__animated animate__slideInUp" data-wow-duration="1s">{{ user.username }}</h3>
+                    <p class="wow animate__animated animate__slideInUp" data-wow-duration="1s">{{ user.email }}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h4>Profile Information</h4>
+                    <h4 class="wow animate__animated animate__slideInUp" data-wow-duration="1s">Profile Information</h4>
                     <form method="post" action="{% url 'profile_update' %}">
                         {% csrf_token %}
                         <div class="form-group">
@@ -35,7 +35,7 @@
                             <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
                         </div>
                         <!-- Add more fields as needed -->
-                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        <button type="submit" class="btn btn-primary wow animate__animated animate__zoomIn" data-wow-duration="2s">Update Profile</button>
                     </form>
                 </div>
             </div>

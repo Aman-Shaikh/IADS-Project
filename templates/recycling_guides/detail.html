@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block title %}{{ guide.title }}{% endblock %}
 {% block content %}
-<div class="container mt-0 pt-5 pb-5">
-    <h1>{{ guide.title }}</h1>
-    <img src="{{ guide.image.url }}" class="img-fluid" alt="{{ guide.title }}">
-    <p class="mt-4">{{ guide.detailed_description }}</p>
-    <a href="{% url 'recycling_guides_list' %}" class="btn btn-secondary">Back to Guides</a>
+<div class="container mt-0 py-5">
+    <h1 class="wow animate__animated animate__slideInUp" data-wow-duration="1s">{{ guide.title }}</h1>
+    <img src="{{ guide.image.url }}" class="img-fluid wow animate__animated animate__zoomIn" data-wow-duration="2s" alt="{{ guide.title }}">
+    <p class="mt-4 wow animate__animated animate__slideInUp" data-wow-duration="1s">{{ guide.detailed_description }}</p>
+    <a href="{% url 'recycling_guides_list' %}" class="btn btn-secondary wow animate__animated animate__zoomIn" data-wow-duration="1s">Back to Guides</a>
 </div>
 {% endblock %}

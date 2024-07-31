@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
+<div class="container py-5">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 wow animate__animated animate__slideInLeft" data-wow-duration="1.5s">
             <h1>Submit a Review</h1>
             <form method="post" class="mb-4">
                 {% csrf_token %}
@@ -15,7 +15,7 @@
                 <button type="submit" class="btn btn-light-green btn-block">Submit Review</button>
             </form>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 wow animate__animated animate__slideInRight" data-wow-duration="1.5s">
             <h1 class="mt-4 mt-md-0">All Reviews</h1>
             <ul class="list-group">
                 {% for review in reviews %}

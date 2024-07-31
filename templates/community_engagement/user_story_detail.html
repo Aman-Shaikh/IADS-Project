@@ -3,9 +3,9 @@
 {% block title %}{{ story.title }}{% endblock %}
 
 {% block content %}
-    <div class="mt-4"><h2 style="text-align: center">Welcome to User Stories</h2></div>
+    <div class="py-4"><h2 class="wow animate__animated animate__slideInUp" data-wow-duration="1s" style="text-align: center">Welcome to User Stories</h2>
 <main class="container mt-4">
-    <div class="card mb-4">
+    <div class="card mb-4 wow animate__animated animate__zoomIn" data-wow-duration="1s">
         <div class="card-body">
             <h1 class="card-title">{{ story.title }}</h1>
             <p class="card-text">{{ story.content }}</p>
@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <section>
+    <section class="wow animate__animated animate__slideInUp" data-wow-duration="1s">
 
         <h3>Add a Comment</h3>
         <form method="post">
@@ -34,4 +34,5 @@
         </ul>
     </section>
 </main>
+    </div>
 {% endblock %}
