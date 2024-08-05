@@ -30,6 +30,39 @@ class Event(models.Model):
 #     def __str__(self):
 #         return f"{self.user.username} - {self.event.title}"
 
+# class CommunityCleanUpRSVP(models.Model):
+#     GENDER_CHOICES = [
+#         ('M', 'Male'),
+#         ('F', 'Female'),
+#         ('O', 'Other'),
+#     ]
+#
+#     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='community_clean_up_rsvps')
+#     name = models.CharField(max_length=255)
+#     phone_number = models.CharField(max_length=15)
+#     email_id = models.EmailField()
+#     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+#
+#     def __str__(self):
+#         return f"{self.name} - {self.event.title}"
+#
+# class RecyclingWorkshopRSVP(models.Model):
+#     GENDER_CHOICES = [
+#         ('M', 'Male'),
+#         ('F', 'Female'),
+#         ('O', 'Other'),
+#     ]
+#
+#     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='recycling_workshop_rsvps')
+#     name = models.CharField(max_length=255)
+#     phone_number = models.CharField(max_length=15)
+#     email_id = models.EmailField()
+#     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+#
+#     def __str__(self):
+#         return f"{self.name} - {self.event.title}"
+
+# Community Clean-Up RSVP model
 class CommunityCleanUpRSVP(models.Model):
     GENDER_CHOICES = [
         ('M', 'Male'),
@@ -38,6 +71,7 @@ class CommunityCleanUpRSVP(models.Model):
     ]
 
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='community_clean_up_rsvps')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=15)
     email_id = models.EmailField()
@@ -46,6 +80,7 @@ class CommunityCleanUpRSVP(models.Model):
     def __str__(self):
         return f"{self.name} - {self.event.title}"
 
+# Recycling Workshop RSVP model
 class RecyclingWorkshopRSVP(models.Model):
     GENDER_CHOICES = [
         ('M', 'Male'),
@@ -54,6 +89,7 @@ class RecyclingWorkshopRSVP(models.Model):
     ]
 
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='recycling_workshop_rsvps')
+    user = models.ForeignKey(User, on_delete=models.CASCADE,  null=True, blank=True)
     name = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=15)
     email_id = models.EmailField()
@@ -77,4 +113,4 @@ class WorkshopMaterial(models.Model):
 #     comments = models.TextField()
 #
 #     def __str__(self):
-#         return f"{self.user.username} - {self.event.title}"
+#    return f"{self.user.username} - {self.event.title}"

@@ -54,3 +54,16 @@ def recycling_workshop_rsvp(request, pk):
         form = RecyclingWorkshopRSVPForm()
     return render(request, 'upcomming_events/recycling_workshop_rsvp_form.html', {'form': form, 'event': event})
 
+@login_required
+def community_cleanup_registrations_view(request):
+    user = request.user
+    registrations = CommunityCleanUpRSVP.objects.filter(name=user)
+    print(len(registrations))
+    return render(request, 'upcomming_events/community_cleanup_registrations.html', {'registrations': registrations})
+
+@login_required
+def recycling_workshop_registrations_view(request):
+    user = request.user
+    registrations = RecyclingWorkshopRSVP.objects.filter(user=user)
+    print(len(registrations))
+    return render(request, 'upcomming_events/recycling_workshop_registrations.html', {'registrations': registrations})
