@@ -1,10 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class ServiceRequest(models.Model):
     SERVICE_CHOICES = [
         ('Collect Recyclable Materials', 'Collect Recyclable Materials'),
+        # Add more service types here
     ]
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # No default, ensures user association
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=15, blank=True)
@@ -15,4 +18,3 @@ class ServiceRequest(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.service_type}"
-

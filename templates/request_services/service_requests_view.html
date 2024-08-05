@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}My Service Requests{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="mb-4">My Service Requests</h4>
+                    {% if service_requests %}
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Service Type</th>
+                                    <th scope="col">Request Details</th>
+                                    <th scope="col">Submitted At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for request in service_requests %}
+                                    <tr>
+                                        <td>{{ request.name }}</td>
+                                        <td>{{ request.email }}</td>
+                                        <td>{{ request.phone }}</td>
+                                        <td>{{ request.address }}</td>
+                                        <td>{{ request.service_type }}</td>
+                                        <td>{{ request.request_details }}</td>
+                                        <td>{{ request.submitted_at|date:"M d, Y H:i" }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-info" role="alert">
+                            No service requests found. 
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
