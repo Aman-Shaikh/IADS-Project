@@ -82,3 +82,16 @@ class WorkshopFeedbackView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return redirect('recycling-workshop-detail', pk=self.kwargs['pk']).url
+
+class UserRegisteredEventsView(LoginRequiredMixin, ListView):
+    template_name = 'upcomming_events/user_registered_events.html'
+    context_object_name = 'registered_events'
+
+    def get_queryset(self):
+        # Get all RSVP objects where the user is the current logged-in user
+        community_cleanups = CommunityCleanUpRSVP.objects.filter(email_id=self.request.user.email)
+        recycling_workshops = RecyclingWorkshopRSVP.objects.filter(email_id=self.request.user.email)
+        return {
+            'community_cleanups': community_cleanups,
+            'recycling_workshops': recycling_workshops
+        }

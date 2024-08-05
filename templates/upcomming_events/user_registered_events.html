@@ -1,0 +1,60 @@
+<!-- templates/upcomming_events/user_registered_events.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">My Registered Events</h2>
+
+    <!-- Community Clean-Ups -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Community Clean-Ups</h4>
+        </div>
+        <div class="card-body">
+            {% if registered_events.community_cleanups %}
+                <div class="list-group">
+                    {% for rsvp in registered_events.community_cleanups %}
+                        <a href="{% url 'community-cleanup-detail' rsvp.event.pk %}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ rsvp.event.title }}</h5>
+                                <small>{{ rsvp.event.date }}</small>
+                            </div>
+                            <p class="mb-1">{{ rsvp.event.description }}</p>
+                            <small>Location: {{ rsvp.event.location }}</small>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No Community Clean-Ups registered yet.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Recycling Workshops -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Recycling Workshops</h4>
+        </div>
+        <div class="card-body">
+            {% if registered_events.recycling_workshops %}
+                <div class="list-group">
+                    {% for rsvp in registered_events.recycling_workshops %}
+                        <a href="{% url 'recycling-workshop-detail' rsvp.event.pk %}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ rsvp.event.title }}</h5>
+                                <small>{{ rsvp.event.date }}</small>
+                            </div>
+                            <p class="mb-1">{{ rsvp.event.description }}</p>
+                            <small>Location: {{ rsvp.event.location }}</small>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No Recycling Workshops registered yet.</p>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

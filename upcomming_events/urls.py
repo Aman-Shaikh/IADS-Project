@@ -1,6 +1,10 @@
+# urls.py
+
 from django.urls import path
 from .views import (
-    CommunityCleanUpListView, CommunityCleanUpDetailView, CommunityCleanUpRSVPView, RecyclingWorkshopListView, RecyclingWorkshopDetailView, RecyclingWorkshopRSVPView, WorkshopFeedbackView
+    CommunityCleanUpListView, CommunityCleanUpDetailView, CommunityCleanUpRSVPView,
+    RecyclingWorkshopListView, RecyclingWorkshopDetailView, RecyclingWorkshopRSVPView,
+    WorkshopFeedbackView, UserRegisteredEventsView
 )
 
 urlpatterns = [
@@ -12,4 +16,6 @@ urlpatterns = [
     path('recycling_workshop/<int:pk>/', RecyclingWorkshopDetailView.as_view(), name='recycling-workshop-detail'),
     path('recycling_workshop/<int:pk>/rsvp/', RecyclingWorkshopRSVPView.as_view(), name='recycling-workshop-rsvp'),
     path('recycling_workshop/<int:pk>/feedback/', WorkshopFeedbackView.as_view(), name='workshop-feedback'),
+
+    path('my_events/', UserRegisteredEventsView.as_view(), name='user-registered-events'),  # New URL pattern
 ]
