@@ -21,14 +21,14 @@ class Event(models.Model):
         return self.title
 
 # RSVP model
-class RSVP(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='rsvps')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    number_of_participants = models.PositiveIntegerField(default=1)
-    additional_supplies = models.TextField(blank=True, null=True)
-
-    def __str__(self):
-        return f"{self.user.username} - {self.event.title}"
+# class RSVP(models.Model):
+#     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='rsvps')
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     number_of_participants = models.PositiveIntegerField(default=1)
+#     additional_supplies = models.TextField(blank=True, null=True)
+#
+#     def __str__(self):
+#         return f"{self.user.username} - {self.event.title}"
 
 class CommunityCleanUpRSVP(models.Model):
     GENDER_CHOICES = [
@@ -70,11 +70,11 @@ class WorkshopMaterial(models.Model):
     def __str__(self):
         return self.title
 
-class WorkshopFeedback(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='feedbacks')
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    rating = models.PositiveSmallIntegerField()
-    comments = models.TextField()
-
-    def __str__(self):
-        return f"{self.user.username} - {self.event.title}"
+# class WorkshopFeedback(models.Model):
+#     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='feedbacks')
+#     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+#     rating = models.PositiveSmallIntegerField()
+#     comments = models.TextField()
+#
+#     def __str__(self):
+#         return f"{self.user.username} - {self.event.title}"
