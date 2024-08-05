@@ -1,11 +1,12 @@
-{% extends "base.html" %}
+54v {% extends "base.html" %}
 {% block title %}Recycling Guides{% endblock %}
 {% block content %}
-<h1 class="pt-5 pb-3">Recycling Guides</h1>
+    <div class="container-fluid py-5">
+<h1 class="mb-4 wow animate__animated animate__slideInLeft" data-wow-duration="1\s">Recycling Guides</h1>
 <div class="row">
     {% for guide in guides %}
     <div class="col-md-4">
-        <div class="card mb-4">
+        <div class="card mb-4 wow animate__animated animate__jackInTheBox" data-wow-duration="1.5s">
             <img class="card-img-top" src="{{ guide.image.url }}" alt="{{ guide.title }}">
             <div class="card-body">
                 <h5 class="card-title">{{ guide.title }}</h5>
@@ -16,4 +17,5 @@
     </div>
     {% endfor %}
 </div>
+    </div>
 {% endblock %}

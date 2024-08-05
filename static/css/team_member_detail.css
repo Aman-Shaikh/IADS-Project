@@ -104,6 +104,7 @@ h2 {
 .edit-link:hover {
     background-color: #2980b9;
     transform: translateY(-2px);
+    color: #fff;
 }
 
 @media (max-width: 768px) {

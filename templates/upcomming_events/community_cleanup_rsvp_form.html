@@ -7,11 +7,11 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/upcomming_events.css' %}">
 </header>
-<div class="container my-4">
+<div class="container py-5">
     <h1 class="text-center mb-4">RSVP for {{ event.title }}</h1>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form method="post" class="list-card">
+            <form method="post" class="list-card wow animate__animated animate__jackInTheBox" data-wow-duration="1.5s">
                 {% csrf_token %}
                 <div class="list-card-body">
                     <div class="form-group row">

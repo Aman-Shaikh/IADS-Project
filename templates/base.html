@@ -41,7 +41,7 @@
                         <a class="nav-link" href="{% url 'team_member_list' %}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
+                        <a class="nav-link" href="{% url 'usercomplaint' %}">Contact Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'user_history' %}">User History</a>
@@ -105,17 +105,17 @@
                         <a class="footer-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="footer-item">
-                        <a class="footer-link" href="#">About Us</a>
+                        <a class="footer-link" href="{% url 'team_member_list' %}">About Us</a>
                     </li>
                     <li class="footer-item">
-                        <a class="footer-link" href="#">Contact Us</a>
+                        <a class="footer-link" href="{% url 'usercomplaint' %}">Contact Us</a>
                     </li>
                     <li class="footer-item">
                         <a class="footer-link" href="{% url 'user_history' %}">User History</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="footer-item">
-                        <a class="footer-link" href="#">Profile</a>
+                        <a class="footer-link" href="{% url 'profile' %}">Profile</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -135,7 +135,7 @@
                 <p style="color: white" class="wow animate__animated animate__slideInUp" data-wow-duration="2s">Informational website which will be dedicated to educating users on effective waste management practices.</p>
             </div>
         </div>
-        <p class="text-center mt-3 wow animate__animated animate__slideInUp" data-wow-duration="2s" style="color: white;">RecycleWise 2024 | Copyright</p>
+        <p class="text-center mt-3 wow animate__animated animate__slideInUp" data-wow-duration="2s" style="color: white;">RecycleWise 2024</p>
     </footer>
     <script>
         new WOW().init();

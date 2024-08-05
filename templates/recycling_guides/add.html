@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Add Recycling Guide{% endblock %}
 {% block content %}
-<div class="container mt-5">
+<div class="container py-5 wow animate__animated animate__slideInLeft" data-wow-duration="1s">
     <h1>Add Recycling Guide</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}

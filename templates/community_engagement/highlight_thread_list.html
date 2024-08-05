@@ -12,8 +12,8 @@
 <main>
     <div class="container-fluid py-3">
     <div class="my-4">
-        <h1 class="text-center">Forum Highlights</h1>
-        <a href="{% url 'highlight_thread_create' %}" class="create-thread-btn">Create New Thread</a>
+        <h1 class="text-center wow animate__animated animate__slideInDown" data-wow-duration="2s">Forum Highlights</h1>
+        <a href="{% url 'highlight_thread_create' %}" class="create-thread-btn wow animate__animated animate__zoomIn" data-wow-duration="2s">Create New Thread</a>
     </div>
     {% if messages %}
         <ul class="messages">
@@ -22,7 +22,7 @@
             {% endfor %}
         </ul>
     {% endif %}
-    <div class="thread-list wow animate__animated animate__fadeIn">
+    <div class="thread-list wow animate__animated animate__jackInTheBox" data-wow-duration="1.5s"">
         {% for thread in threads %}
             <div class="card pt-2 pb-5">
                 <div class="container">

@@ -70,9 +70,9 @@
         text-decoration: none;
     }
   </style>
-
-  <h2>Infographics</h2>
-  <ul class="infographic-list">
+<div class="container-fluid py-5">
+  <h2 class="wow animate__animated animate__slideInDown" data-wow-duration="1s">Infographics</h2>
+  <ul class="infographic-list wow animate__animated animate__slideInLeft" data-wow-duration="1s">
     {% for infographic in infographics %}
       <a href="{% url 'infographic_detail' pk=infographic.pk %}" class="infographic-item">
         <div class="infographic-thumbnail" style="background-image: url('{{ infographic.image.url }}');"></div>
@@ -83,5 +83,6 @@
       </a>
     {% endfor %}
   </ul>
-  <a class="add-infographic" href="{% url 'infographic_new' %}">Add new infographic</a>
+  <a class="add-infographic wow animate__animated animate__zoomIn" data-wow-duration="2s" href="{% url 'infographic_new' %}">Add new infographic</a>
+</div>
 {% endblock %}
