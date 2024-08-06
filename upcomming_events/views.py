@@ -23,6 +23,7 @@ def community_cleanup_rsvp(request, pk):
         if form.is_valid():
             rsvp = form.save(commit=False)
             rsvp.event = event
+            rsvp.user = request.user  # Set the user here
             rsvp.save()
             return redirect('community-cleanup-detail', pk=event.pk)
     else:
@@ -48,6 +49,7 @@ def recycling_workshop_rsvp(request, pk):
         if form.is_valid():
             rsvp = form.save(commit=False)
             rsvp.event = event
+            rsvp.user = request.user
             rsvp.save()
             return redirect('recycling-workshop-detail', pk=event.pk)
     else:
@@ -57,7 +59,7 @@ def recycling_workshop_rsvp(request, pk):
 @login_required
 def community_cleanup_registrations_view(request):
     user = request.user
-    registrations = CommunityCleanUpRSVP.objects.filter(name=user)
+    registrations = CommunityCleanUpRSVP.objects.filter(user=user)
     print(len(registrations))
     return render(request, 'upcomming_events/community_cleanup_registrations.html', {'registrations': registrations})
 
