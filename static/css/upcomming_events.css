@@ -66,23 +66,27 @@ form button:hover {
 }
 
 
+/* Additional styles for consistent card height */
 .list-card {
-     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensure all cards stretch to the same height */
+    background-color: white;
     border: 2px solid green;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
 }
 
 .list-card-body {
-    /*background-color: #ffffff; !* White background for card body *!*/
-    /*border-color: black;*/
-
+    flex-grow: 1; /* Make the body grow to fill the card */
 }
 
 .list-card-title {
-    color: #343a40; /* Dark color for card titles */
     font-weight: bold;
+    color: #343a40; /* Dark color for card titles */
 }
 
 .list-card-text {
@@ -92,12 +96,14 @@ form button:hover {
 .btn-primary {
     background-color: #28a745; /* Green button */
     border-color: #28a745; /* Green border */
+    align-self: flex-end; /* Ensure button is aligned at the bottom */
 }
 
 .btn-primary:hover {
     background-color: #218838; /* Darker green on hover */
     border-color: #1e7e34; /* Darker green border on hover */
 }
+
 
 /*---------- Details ------*/
 
@@ -144,3 +150,4 @@ form button:hover {
     background-color: #218838;
     border-color: #1e7e34;
 }
+
