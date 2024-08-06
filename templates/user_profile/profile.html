@@ -38,8 +38,13 @@
                             <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
                         </div>
                         <!-- Add more fields as needed -->
-                        <button type="submit" class="btn btn-primary wow animate__animated animate__zoomIn" data-wow-duration="2s">Update Profile</button>
-                    </form>
+                       <button type="submit" 
+        class="btn btn-primary wow animate__animated animate__zoomIn" 
+        data-wow-duration="2s" 
+        style="background: linear-gradient(to right, #9ACD32, #009900); border: none; color: white; padding: 10px 20px; font-weight: bold; text-align: center; text-decoration: none; display: inline-block; transition: background 0.3s ease; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); cursor: pointer;">
+  Update Profile
+</button>
+  </form>
                 </div>
             </div>
         </div>
@@ -52,14 +57,24 @@
                 <div class="card-body">
                     <ul class="list-group list-group-flush wow animate__animated animate__fadeIn" data-wow-duration="1s">
                         <li class="list-group-item p-0 mb-2">
-                            <a href="{% url 'service_requests_view' %}" class="btn btn-primary btn-block">View Service Requests</a>
+                           <a href="{% url 'service_requests_view' %}" 
+                               class="btn btn-primary btn-block" 
+                               style="background: linear-gradient(to right, #9ACD32, #009900); border: none; color: white;">
+                               View Service Requests
+                            </a>  
                         </li>
                         <li class="list-group-item p-0 mb-2">
-                            <a href="{% url 'community_cleanup_registrations' %}" class="btn btn-primary btn-block">My Community Cleanup Events Registrations</a>
-                        </li>
+                          <a href="{% url 'community_cleanup_registrations' %}" 
+   class="btn btn-primary btn-block" 
+   style="background: linear-gradient(to right, #9ACD32, #009900); border: none; color: white; padding: 10px 20px; font-weight: bold; text-align: center; text-decoration: none; display: inline-block; transition: background 0.3s ease;">
+   My Community Cleanup Events Registrations
+</a> </li>
                         <li class="list-group-item p-0 mb-2">
-                            <a href="{% url 'recycling_workshop_registrations' %}" class="btn btn-primary btn-block">My Recycling Workshop Registrations</a>
-                        </li>
+                         <a href="{% url 'recycling_workshop_registrations' %}" 
+   class="btn btn-primary btn-block" 
+   style="background: linear-gradient(to right, #9ACD32, #009900); border: none; color: white; padding: 10px 20px; font-weight: bold; text-align: center; text-decoration: none; display: inline-block; transition: background 0.3s ease; width: 100%; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); cursor: pointer;">
+   My Recycling Workshop Registrations
+</a>  </li>
                      
                     </ul>
                 </div>

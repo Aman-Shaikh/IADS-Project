@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import TeamMember, Section
 from .forms import TeamMemberForm, SectionForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,user_passes_test
 
 @login_required
 def team_member_list(request):
@@ -37,7 +37,12 @@ def section_detail(request, pk):
     section = get_object_or_404(Section, pk=pk)
     return render(request, 'aboutus/section_detail.html', {'section': section})
 
+
+def is_admin(user):
+    return user.is_staff  # or use user.is_superuser if you want only superusers to have access
+
 @login_required
+@user_passes_test(is_admin)
 def add_team_member(request):
     if request.method == 'POST':
         form = TeamMemberForm(request.POST, request.FILES)  # Handle file uploads
